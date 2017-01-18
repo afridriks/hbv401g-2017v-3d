@@ -1,0 +1,20 @@
+Hægt að velja fyrir/eftir hádegi eða heilan dag.
+  - einnig hægt að velja styttri tímasetningar.
+
+Við ætlum að nota tags til að gera leitina þæginlegri.
+
+Velja tegund af dagsferð.
+
+Velja staðsetningu út frá tag.
+
+Þurfum 10-15 user stories.
+
+Grafíska viðmótið þarf ekki að vera stórfenglegt.
+  - Aðallega search-box með einhverjum skilyrðum.
+  - Viljum birta í töflu, kannski með mynd við hliðina á.
+  - Leita eftir dagsetningu: To/From.
+    - Bæta við boxi fyrir þetta.
+  - Þrengja leit eftir fjölda.
+    - Bæta við boxi fyrir þetta líka.
+    - Hafa fítus/checkbox fyrir börn.
+  - Þurfum að hafa eitt box þar sem þú skrifar bara týpuna á ferðinni.
