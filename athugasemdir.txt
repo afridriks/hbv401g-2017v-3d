@@ -2,10 +2,10 @@ Hægt að velja fyrir/eftir hádegi eða heilan dag.
   - einnig hægt að velja styttri tímasetningar.
 
 Við ætlum að nota tags til að gera leitina þæginlegri.
+- Velja staðsetningu út frá tag.
+- Þurfum að útfæra gagnagrunn fyrir þetta.
 
 Velja tegund af dagsferð.
-
-Velja staðsetningu út frá tag.
 
 Þurfum 10-20 user stories.
 
