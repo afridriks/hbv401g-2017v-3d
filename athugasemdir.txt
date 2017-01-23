@@ -7,7 +7,7 @@ Velja tegund af dagsferð.
 
 Velja staðsetningu út frá tag.
 
-Þurfum 10-15 user stories.
+Þurfum 10-20 user stories.
 
 Grafíska viðmótið þarf ekki að vera stórfenglegt.
   - Aðallega search-box með einhverjum skilyrðum.
@@ -18,3 +18,5 @@ Grafíska viðmótið þarf ekki að vera stórfenglegt.
     - Bæta við boxi fyrir þetta líka.
     - Hafa fítus/checkbox fyrir börn.
   - Þurfum að hafa eitt box þar sem þú skrifar bara týpuna á ferðinni.
+  - Hotel-pickup valmöguleiki.
+
