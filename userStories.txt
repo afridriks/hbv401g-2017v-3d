@@ -32,12 +32,11 @@ Viðmót:
 
 Athugasemdakerfi:
 
-Ása:
-1. Sem ferðalangur, vil ég geta séð hversu löng dagsferðin á að vera því ég hef ekki mikinn tíma á íslandi og vill plana allt vel.
+-> As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to plan everything well.
 
-2. Sem notandi, vil ég geta gefið ferðum sem ég hef farið í einkun eða stjörnugjöf svo ég geti hjálpað öðrum ferðalöngum að velja ferðir.
+-> As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
 
-3. Sem foreldri, vil ég geta valið ferðir sem bjóða uppá það að hafa börn með svo ég sé ekki að fara í ferðir sem eru ekki fyrir börn.
+-> As a parent, I want to be able to choose a day trip that are suitible for families so that I can take my kids with me.
 
 
 Sigurlaug
