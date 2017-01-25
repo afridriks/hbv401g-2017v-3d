@@ -1,3 +1,6 @@
+   Group 3D
+   
+   Einar Andreas Helgason - eah8@hi.is - 180282-7269
    Sigurlaug Þórðardóttir - sth301@hi.is - 150295-3279
    
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
