@@ -1,6 +1,3 @@
- Andri Friðriksson, kt. 141190-2379, anf4@hi.is
- 
- 
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
    time and date for my travels because I will only be staying in Iceland for a limited time.
    
@@ -47,3 +44,7 @@
    plans are flexible in case something comes up.
    
    As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
+   
+   As a disabled person I want to see tours that are accessible for my needs so I can take part in the whole tour.
+
+   As a tour planner I want to be able to register my tour so that people can find it in the search engine.
