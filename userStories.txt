@@ -1,17 +1,7 @@
 Users: Farþegar, notendur vefsíðu, markaðsfræðingar, vefstjóri, kaupandi þjónustu.
-
-
-
+Users: Passengers, web users, marketing manager, webmaster, travel agent, traveller.
 
 Bókun:
-  o Notandi mun geta pantað dagsferð með tilliti til ákveðinnar dagsetningar
-    og tilgreinds tíma.
-  o Notandi mun geta pantað dagsferð út frá ákveðinni staðsetningu eða
-    landssvæði.
-  o Notandi verður að geta óskað eftir því að vera sótt/ur á hótelið sitt.
-  o Notandi getur validð tegund dagsferðar.
-  o Notandi fær heildarverð uppgefið þegar bókun er valin.
-
 -> Sem notandi þá vill ég geta valið úr dagsferðum með tilliti til ákveðinnar
    dagsetningar og tilgreinds tíma.
 
@@ -30,8 +20,6 @@ Bókun:
 -----------------------------------------------------------------------------
 
 Viðmót:
-  o Notandi mun sjá myndir af dagferðum sem auðvelda honum að velja á milli.
-  o Notandi verður alltaf að geta leitað að nýrri ferð eða annarri ferð.
 
 -> Sem notandi þá vill ég geta valdið á milli dagsferða meðal annars með því að
    skoða ljósmyndir úr hverri dagsferð.
@@ -43,11 +31,6 @@ Viðmót:
 -----------------------------------------------------------------------------
 
 Athugasemdakerfi:
-  o
-
-
-
-
 
 Ása:
 1. Sem ferðalangur, vil ég geta séð hversu löng dagsferðin á að vera því ég hef ekki mikinn tíma á íslandi og vill plana allt vel.
