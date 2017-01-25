@@ -11,7 +11,8 @@ Bókun:
 -> Sem notandi þá vill ég geta valið úr dagsferðum eftir tegund. Það gerir
    leit að réttri dagferð mun auðveldari.
    
-   As a traveler 
+   As a traveler, I want to be able to choose a certain type of day trips. I want to be able
+   to narrow down my search based on my interests.
 
 -> Sem heimsækjandi vefsíðunnar þá vill ég geta valið úr dagsferðum með tilliti
    til landssvæðis. Til dæmis ef ég á ekki bíl sem kemst langar leiðir.
