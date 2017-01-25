@@ -1,4 +1,4 @@
- anf4@hi.is
+ Andri Friðriksson, kt. 141190-2379, anf4@hi.is
  
  
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
