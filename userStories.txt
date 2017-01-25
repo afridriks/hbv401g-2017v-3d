@@ -1,8 +1,4 @@
-Users: Farþegar, notendur vefsíðu, markaðsfræðingar, vefstjóri, kaupandi þjónustu.
-Users: Passengers, web users, marketing manager, webmaster, travel agent, traveller.
-
-Bókun:
-   
+ 
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
    time and date for my travels because I will only be staying in Iceland for a limited time.
    
@@ -15,34 +11,27 @@ Bókun:
    As a traveler, I want to be able to search day trips witihin a specific price range so
    that it will match my budget.
 
------------------------------------------------------------------------------
-
-Viðmót:
-
--> Sem notandi þá vill ég geta valið á milli dagsferða meðal annars með því að
-   skoða ljósmyndir úr hverri dagsferð.
-
    As a traveler, I want to be able to access the search bar at all stages of the booking process 
    so that I may cancel or change my mind at any time.
------------------------------------------------------------------------------
 
-Athugasemdakerfi:
+   As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to 
+   plan everything well.
 
--> As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to plan everything well.
+   As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
 
--> As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
+   As a parent, I want to be able to see day trips that are suitable for families so that I can take my kids with me.
 
--> As a parent, I want to be able to see day trips that are suitable for families so that I can take my kids with me.
+   As a traveler I want to be able to search for day trips at a specific location so that I see day trips that are 
+   in my area.
 
+   As a travel agent I want to be able to book more than one person at once to save time and not do the same thing 
+   again and again.
 
-Sigurlaug
-As a traveler I want to be able to search for day trips at a specific location so that I see day trips that are in my area.
+   As a travel agent I want to see how many people can be booked on a particular day trip so I have an idea of how 
+   large the group will be.
 
-As a travel agent I want to be able to book more than one person at once to save time and not do the same thing again and again.
-
-As a travel agent I want to see how many people can be booked on a particular day trip so I have an idea of how large the group will be.
-
-As a traveler I would like to see how many places are available on a particular day trip so I can choose a trið that has enough places 
+   As a traveler I would like to see how many places are available on a particular day trip so I can choose a trip that 
+   has enough places 
 
 
 Einar:
