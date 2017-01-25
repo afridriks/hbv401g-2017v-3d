@@ -20,3 +20,4 @@ Grafíska viðmótið þarf ekki að vera stórfenglegt.
   - Þurfum að hafa eitt box þar sem þú skrifar bara týpuna á ferðinni.
   - Hotel-pickup valmöguleiki.
 
+Bæta við athugasemdakerfi?
