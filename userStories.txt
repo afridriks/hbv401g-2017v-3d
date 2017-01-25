@@ -46,12 +46,10 @@ As a traveler I would like to see how many places are available on a particular 
 
 
 Einar:
-As a hotel manager, I want my hotel to be offered as a possible pickup location as a service to our guests.
-As a bus tour company manager, I want our tours to be listed in the application for better exposure to possible customers.
-As a traveller, I want to search for all possible tours on a specific date to see what’s available and better plan my trip.
-As a traveller, I want to search for, book and pay for a tour online so I don’t have to worry about booking and payment later.
-As a tour guide, I want to use the application to organize a tour for a group of 30 people so I don’t have to do the tour plannig myself.
-As a person who can’t reach their friend who’s on a specific day tour, I want to be able to find the contact details for the tour company so I can check in on my friend.
-As a traveller, I want to review my current bookings and be able to change and/or cancel them so my plans are flexible.
-As a traveller, I want to be able to review my past bookings so I can better recall what I did and when.
-As a traveller, I want to book a same-day tour with hotel pickup as it is raining and I don’t want to be outside much.
+
+As a traveller, I want to be able to book a tour online so I have secured my place in the tour and don't have to go through other trouble.
+As a traveller, I want to be able to pay for a tour online so that I don't have to worry about doing it later.
+As a parent whose children are  on a specific day tour, I want to be able to find the contact details for the tour company so I can check in on them.
+As a traveller, I want to be able to review my current bookings and be able to change and/or cancel them so my plans are flexible in case something comes up.
+As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
+
