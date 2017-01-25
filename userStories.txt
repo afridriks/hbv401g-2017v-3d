@@ -2,23 +2,15 @@ Users: Farþegar, notendur vefsíðu, markaðsfræðingar, vefstjóri, kaupandi 
 Users: Passengers, web users, marketing manager, webmaster, travel agent, traveller.
 
 Bókun:
--> Sem notandi þá vill ég geta valið úr dagsferðum með tilliti til ákveðinnar
-   dagsetningar og tilgreinds tíma.
    
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
    time and date for my travels because I will only be staying in Iceland for a limited time.
-
--> Sem notandi þá vill ég geta valið úr dagsferðum eftir tegund. Það gerir
-   leit að réttri dagferð mun auðveldari.
    
    As a traveler, I want to be able to choose a certain type of day trips. I want to be able
    to narrow down my search based on my interests.
-
--> Sem heimsækjandi vefsíðunnar þá vill ég geta valið úr dagsferðum með tilliti
-   til landssvæðis. Til dæmis ef ég á ekki bíl sem kemst langar leiðir.
-
--> Sem kaupandi dagsferðar vill ég geta verið sótt/ur á hótelið mitt. Það sparar
-   mér mikinn tíma og kostnað.
+   
+   As a traveler, I want to be able to request a hotel pickup so that I will not have to
+   rent a car or worry about other expenses regarding commuting.
 
 -> Sem kaupandi dagsferðar vill ég ekki að verð bókunar hækki seinna í
    bókunarferlinu. Heldur vill ég að allt komi strax fram.
