@@ -29,7 +29,7 @@ Viðmót:
 -----------------------------------------------------------------------------
 
 Athugasemdakerfi:
-
+Ása
 -> As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to plan everything well.
 
 -> As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
