@@ -11,9 +11,9 @@ Bókun:
    
    As a traveler, I want to be able to request a hotel pickup so that I will not have to
    rent a car or worry about other expenses regarding commuting.
-
--> Sem kaupandi dagsferðar vill ég ekki að verð bókunar hækki seinna í
-   bókunarferlinu. Heldur vill ég að allt komi strax fram.
+   
+   As a traveler, I want to be able to search day trips witihin a specific price range so
+   that it will match my budget.
 
 -----------------------------------------------------------------------------
 
