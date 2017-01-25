@@ -4,6 +4,9 @@ Users: Passengers, web users, marketing manager, webmaster, travel agent, travel
 Bókun:
 -> Sem notandi þá vill ég geta valið úr dagsferðum með tilliti til ákveðinnar
    dagsetningar og tilgreinds tíma.
+   
+   As a traveler, I want to be able to choose a certain time and date for my travels because I will only
+   be staing in Iceland for a limited time.
 
 -> Sem notandi þá vill ég geta valið úr dagsferðum eftir tegund. Það gerir
    leit að réttri dagferð mun auðveldari.
