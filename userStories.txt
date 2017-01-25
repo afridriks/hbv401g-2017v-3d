@@ -19,17 +19,15 @@ Bókun:
 
 Viðmót:
 
--> Sem notandi þá vill ég geta valdið á milli dagsferða meðal annars með því að
+-> Sem notandi þá vill ég geta valið á milli dagsferða meðal annars með því að
    skoða ljósmyndir úr hverri dagsferð.
 
--> Sem notandi þá vill ég alltaf hafa aðgang að leit á síðunni, það auðveldar
-   mér að finna nýja ferð ef ég skipti um skoðun.
-
-
+   As a traveler, I want to be able to access the search bar at all stages of the booking process 
+   so that I may cancel or change my mind at any time.
 -----------------------------------------------------------------------------
 
 Athugasemdakerfi:
-Ása
+
 -> As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to plan everything well.
 
 -> As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
