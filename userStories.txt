@@ -1,0 +1,46 @@
+Users: Farþegar, notendur vefsíðu, markaðsfræðingar, vefstjóri, kaupandi þjónustu.
+
+
+
+
+Bókun:
+  o Notandi mun geta pantað dagsferð með tilliti til ákveðinnar dagsetningar
+    og tilgreinds tíma.
+  o Notandi mun geta pantað dagsferð út frá ákveðinni staðsetningu eða
+    landssvæði.
+  o Notandi verður að geta óskað eftir því að vera sótt/ur á hótelið sitt.
+  o Notandi getur validð tegund dagsferðar.
+  o Notandi fær heildarverð uppgefið þegar bókun er valin.
+
+-> Sem notandi þá vill ég geta valið úr dagsferðum með tilliti til ákveðinnar
+   dagsetningar og tilgreinds tíma.
+
+-> Sem notandi þá vill ég geta valið úr dagsferðum eftir tegund. Það gerir
+   leit að réttri dagferð mun auðveldari.
+
+-> Sem heimsækjandi vefsíðunnar þá vill ég geta valið úr dagsferðum með tilliti
+   til landssvæðis. Til dæmis ef ég á ekki bíl sem kemst langar leiðir.
+
+-> Sem kaupandi dagsferðar vill ég geta verið sótt/ur á hótelið mitt. Það sparar
+   mér mikinn tíma og kostnað.
+
+-> Sem kaupandi dagsferðar vill ég ekki að verð bókunar hækki seinna í
+   bókunarferlinu. Heldur vill ég að allt komi strax fram.
+
+-----------------------------------------------------------------------------
+
+Viðmót:
+  o Notandi mun sjá myndir af dagferðum sem auðvelda honum að velja á milli.
+  o Notandi verður alltaf að geta leitað að nýrri ferð eða annarri ferð.
+
+-> Sem notandi þá vill ég geta valdið á milli dagsferða meðal annars með því að
+   skoða ljósmyndir úr hverri dagsferð.
+
+-> Sem notandi þá vill ég alltaf hafa aðgang að leit á síðunni, það auðveldar
+   mér að finna nýja ferð ef ég skipti um skoðun.
+
+
+-----------------------------------------------------------------------------
+
+Athugasemdakerfi:
+  o
