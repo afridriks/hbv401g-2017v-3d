@@ -40,8 +40,9 @@ As a traveler I want to be able to search for day trips at a specific location s
 
 As a travel agent I want to be able to book more than one person at once to save time and not do the same thing again and again.
 
-As a travel agent I want to see how many people are booked on a particular day trip so I can avoid overbooking popular trips.
+As a travel agent I want to see how many people can be booked on a particular day trip so I have an idea of how large the group will be.
 
+As a traveler I would like to see how many places are available on a particular day trip so I can choose a trið that has enough places 
 
 
 Einar:
