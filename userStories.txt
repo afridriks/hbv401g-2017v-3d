@@ -32,7 +32,7 @@ Athugasemdakerfi:
 
 -> As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
 
--> As a parent, I want to be able to choose a day trip that are suitible for families so that I can take my kids with me.
+-> As a parent, I want to be able to choose a day trip that is suitable for families so that I can take my kids with me.
 
 
 Sigurlaug
