@@ -1,7 +1,8 @@
    Group 3D
    
    Andri Friðriksson - anf4@hi.is - 141190-2379
-   Einar Andreas Helgason - eah8@hi.is - 180282-7269
+   Ása Júlía Aðalsteinsdóttir - aja11@hi.is - 030896-2549
+   Einar Andreas Helgason - eah8@hi.is - 180282-7269
    Sigurlaug Þórðardóttir - sth301@hi.is - 150295-3279
    
    As a traveler, I want to be able to choose a certain day trip with regard to a specific
