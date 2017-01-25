@@ -33,12 +33,15 @@
    As a traveler I would like to see how many places are available on a particular day trip so I can choose a trip that 
    has enough places 
 
-
-Einar:
-
-As a traveller, I want to be able to book a tour online so I have secured my place in the tour and don't have to go through other trouble.
-As a traveller, I want to be able to pay for a tour online so that I don't have to worry about doing it later.
-As a parent whose children are  on a specific day tour, I want to be able to find the contact details for the tour company so I can check in on them.
-As a traveller, I want to be able to review my current bookings and be able to change and/or cancel them so my plans are flexible in case something comes up.
-As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
-
+   As a traveller, I want to be able to book a tour online so I have secured my place in the tour and don't 
+   have to go through other trouble.
+   
+   As a traveller, I want to be able to pay for a tour online so that I don't have to worry about doing it later.
+   
+   As a parent whose children are  on a specific day tour, I want to be able to find the contact details for the tour 
+   company so I can check in on them.
+   
+   As a traveller, I want to be able to review my current bookings and be able to change and/or cancel them so my 
+   plans are flexible in case something comes up.
+   
+   As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
