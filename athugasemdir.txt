@@ -19,5 +19,6 @@ Grafíska viðmótið þarf ekki að vera stórfenglegt.
     - Hafa fítus/checkbox fyrir börn.
   - Þurfum að hafa eitt box þar sem þú skrifar bara týpuna á ferðinni.
   - Hotel-pickup valmöguleiki.
+  - I like horses/swimming/etc | I don't like horses/swimming/etc
 
 Bæta við athugasemdakerfi?
