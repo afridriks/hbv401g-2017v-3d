@@ -25,7 +25,7 @@
 
    As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
 
-   As a parent, I want to be able to see day trips that are suitable for families so that I can take my kids with me.
+   As a traveler, I want to be able to choose family friendly or accessible tours so that I take part in the whole tour.   
 
    As a traveler I want to be able to search for day trips at a specific location so that I see day trips that are 
    in my area.
@@ -47,11 +47,8 @@
    As a parent whose children are  on a specific day tour, I want to be able to find the contact details for the tour 
    company so I can check in on them.
    
-   As a traveller, I want to be able to review my current bookings and be able to change and/or cancel them so my 
-   plans are flexible in case something comes up.
-   
    As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
    
-   As a disabled person I want to see tours that are accessible for my needs so I can take part in the whole tour.
-
+   As a traveller, I want to be able to change and/or cancel them so my plans are flexible in case something comes up.
+   
    As a tour planner I want to be able to register my tour so that people can find it in the search engine.
