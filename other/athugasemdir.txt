@@ -1,0 +1,24 @@
+Hægt að velja fyrir/eftir hádegi eða heilan dag..
+  - einnig hægt að velja styttri tímasetningar.
+
+Við ætlum að nota tags til að gera leitina þæginlegri.
+- Velja staðsetningu út frá tag.
+- Þurfum að útfæra gagnagrunn fyrir þetta.
+
+Velja tegund af dagsferð
+
+Þurfum 10-20 user stories.
+
+Grafíska viðmótið þarf ekki að vera stórfenglegt.
+  - Aðallega search-box með einhverjum skilyrðum.
+  - Viljum birta í töflu, kannski með mynd við hliðina á.
+  - Leita eftir dagsetningu: To/From.
+    - Bæta við boxi fyrir þetta.
+  - Þrengja leit eftir fjölda.
+    - Bæta við boxi fyrir þetta líka.
+    - Hafa fítus/checkbox fyrir börn.
+  - Þurfum að hafa eitt box þar sem þú skrifar bara týpuna á ferðinni.
+  - Hotel-pickup valmöguleiki.
+  - I like horses/swimming/etc | I don't like horses/swimming/etc
+
+Bæta við athugasemdakerfi?..

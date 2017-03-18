@@ -1,0 +1,54 @@
+   Group 3D
+   
+   Andri Friðriksson - anf4@hi.is - 141190-2379
+   Ása Júlía Aðalsteinsdóttir - aja11@hi.is - 030896-2549
+   Einar Andreas Helgason - eah8@hi.is - 180282-7269
+   Sigurlaug Þórðardóttir - sth301@hi.is - 150295-3279
+   
+   As a traveler, I want to be able to choose a certain day trip with regard to a specific
+   time and date for my travels because I will only be staying in Iceland for a limited time.
+   
+   As a traveler, I want to be able to choose a certain type of day trips. I want to be able
+   to narrow down my search based on my interests.
+   
+   As a traveler, I want to be able to request a hotel pickup so that I will not have to
+   rent a car or worry about other expenses regarding commuting.
+   
+   As a traveler, I want to be able to search day trips witihin a specific price range so
+   that it will match my budget.
+
+   As a traveler, I want to be able to access the search bar at all stages of the booking process 
+   so that I may cancel or change my mind at any time.
+
+   As a traveller, I want to see how long the day trip takes because I have limited time in Iceland and I want to 
+   plan everything well.
+
+   As a user, I want to rate the day trips I have been on so I can help other users with choosing a trip.
+
+   As a traveler, I want to be able to choose family friendly or accessible tours so that I take part in the whole tour.   
+
+   As a traveler I want to be able to search for day trips at a specific location so that I see day trips that are 
+   in my area.
+
+   As a travel agent I want to be able to book more than one person at once to save time and not do the same thing 
+   again and again.
+
+   As a travel agent I want to see how many people can be booked on a particular day trip so I have an idea of how 
+   large the group will be.
+
+   As a traveler I would like to see how many places are available on a particular day trip so I can choose a trip that 
+   has enough places 
+
+   As a traveller, I want to be able to book a tour online so I have secured my place in the tour and don't 
+   have to go through other trouble.
+   
+   As a traveller, I want to be able to pay for a tour online so that I don't have to worry about doing it later.
+   
+   As a parent whose children are  on a specific day tour, I want to be able to find the contact details for the tour 
+   company so I can check in on them.
+   
+   As a traveller, I want to be able to review my past bookings so I can I recommend specific trips to my friends.
+   
+   As a traveller, I want to be able to change and/or cancel them so my plans are flexible in case something comes up.
+   
+   As a tour planner I want to be able to register my tour so that people can find it in the search engine.
