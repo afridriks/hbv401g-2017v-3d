@@ -24,4 +24,22 @@ public class DBManager {
                 ex.printStackTrace();
             }
         }
+    
+    public void doStuff() throws SQLException{
+            myStmt = myConn.createStatement();
+            
+            myStmt.executeUpdate("Create Table users ( name varchar(30), phone int)");
+            myStmt.executeUpdate("Insert into users values ( 'Sigurlaug', 6983135)");
+            myStmt.executeUpdate("Insert into users values ( 'Einar', 8695581)");
+            myStmt.executeUpdate("Insert into users values ( 'Andrea', 8694303)");
+            myStmt.executeUpdate("Insert into users values ( 'Mamma', 8991869)");
+			
+            System.out.println("Insert successful!\n");
+            
+            myRs = myStmt.executeQuery("select * from users");
+			
+            while(myRs.next()) {
+              	System.out.println(myRs.getString("name") + ", " + myRs.getInt("phone"));
+            }
+    }
 }
