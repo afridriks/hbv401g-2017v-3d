@@ -13,8 +13,12 @@ package model;
  */
 public class Model {
 
+    public void search() {
+        
+    }
+        
     /**
-     * @param args the command line arguments
+     * @param argcrs the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
