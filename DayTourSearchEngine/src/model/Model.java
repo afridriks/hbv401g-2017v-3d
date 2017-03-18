@@ -5,6 +5,8 @@
  */
 package model;
 
+// halló heimur!!!
+
 /**
  *
  * @author Sigurlaug
