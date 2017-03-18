@@ -1,4 +1,4 @@
-Hægt að velja fyrir/eftir hádegi eða heilan dag.
+Hægt að velja fyrir/eftir hádegi eða heilan dag..
   - einnig hægt að velja styttri tímasetningar.
 
 Við ætlum að nota tags til að gera leitina þæginlegri.
