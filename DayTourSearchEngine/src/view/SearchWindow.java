@@ -11,6 +11,7 @@ package view;
  */
 public class SearchWindow extends javax.swing.JFrame {
 
+    private int test;
     /**
      * Creates new form SearchWindow
      */
