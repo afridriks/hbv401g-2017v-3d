@@ -5,7 +5,7 @@ Við ætlum að nota tags til að gera leitina þæginlegri.
 - Velja staðsetningu út frá tag.
 - Þurfum að útfæra gagnagrunn fyrir þetta.
 
-Velja tegund af dagsferð..
+Velja tegund af dagsferð
 
 Þurfum 10-20 user stories.
 
@@ -21,4 +21,4 @@ Grafíska viðmótið þarf ekki að vera stórfenglegt.
   - Hotel-pickup valmöguleiki.
   - I like horses/swimming/etc | I don't like horses/swimming/etc
 
-Bæta við athugasemdakerfi?
+Bæta við athugasemdakerfi?..
