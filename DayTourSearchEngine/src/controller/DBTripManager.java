@@ -6,9 +6,10 @@
 package controller;
 
 import java.sql.*;
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.TourCompany;
 import model.Trip;
 
 /**
@@ -27,16 +28,27 @@ public final class DBTripManager {
     }
  
     public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, int type, int location) throws SQLException, ClassNotFoundException {
+        ArrayList<Trip> trips = new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             
+            
+            // ná í Tourcompanies og búa til objects
+            ArrayList<TourCompany> tc = new ArrayList<>();
+            myStmt = myConn.prepareStatement("SELECT * FROM TourCompany;");
+            myRs = myStmt.executeQuery();
+
+            while(myRs.next()) {
+                tc.add(new TourCompany(myRs.getInt("id"),myRs.getString("name"),myRs.getInt("phone"),myRs.getString("address"),myRs.getString("email")));
+              	//System.out.println(myRs.getInt("id")+myRs.getString("name")+myRs.getInt("phone")+myRs.getString("address")+myRs.getString("email"));
+            }            
+  
             // ef familyFriendly er TRUE þá viljum við leita að "familyFriendly = 1"
             // ef familyFriendly er FALSE þá viljum við ekki breyta leitarstrengnum því
             // þá erum við að takmarka okkur við trips sem eru EKKI familyFriendly.
             // eins með accessible
             String familyFriendlyAccessible = makeFFAString(familyFriendly, accessible);
-            
             
             myStmt = myConn.prepareStatement("SELECT * FROM Trip "
                     + "WHERE name LIKE ? "
@@ -58,15 +70,24 @@ public final class DBTripManager {
             myStmt.setString(7,Integer.toString(maxPrice));
             myStmt.setString(8,Integer.toString(type));
             myStmt.setString(9,Integer.toString(location));
-            
-            
             myStmt.setQueryTimeout(30);
             
             myRs = myStmt.executeQuery();
-            
-            // bara til að testa
-            while(myRs.next()) {
-              	System.out.println(myRs.getString("name") + ", " + myRs.getInt("maxTravelers") + ", " + myRs.getString("date"));
+ 
+            // breyta ResultSet í fylki af Trip
+             while(myRs.next()) {
+                // finna rétt tourcompany
+                TourCompany newTC = null;
+                for(TourCompany tourCo : tc) {
+                    if(tourCo.getId() == myRs.getInt("tourCompanyId")) {
+                        newTC = tourCo;
+                        break;
+                    }
+                }
+                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),null,null,null,myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
+                trips.add(newTrip);
+                // bara til að testa
+              	//System.out.println(myRs.getString("name") + ", " + myRs.getInt("maxTravelers") + ", " + myRs.getString("date") + ", " + myRs.getString("startTime"));
             }
             
         } catch (SQLException ex) {
@@ -83,7 +104,7 @@ public final class DBTripManager {
         
         // hér þarf að breyta myRs í Trip[]
         
-        return null;
+        return trips.toArray(new Trip[0]);
     }
     
     private String makeFFAString(Boolean a, Boolean b) {
@@ -101,7 +122,11 @@ public final class DBTripManager {
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
-        man.search("hest",java.sql.Date.valueOf("2017-06-22"),java.sql.Time.valueOf("09:00:00"),java.sql.Time.valueOf("11:00:00"),"mm",false,false,10000,20000,2,1);
+        Trip[] trips = man.search("hest",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,10000,20000,2,1);
+        
+        for(Trip t: trips) {
+            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate());
+        }
     }
     
 }

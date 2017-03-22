@@ -5,7 +5,10 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
+
+
 
 
 /**
@@ -17,8 +20,8 @@ public class Trip {
     private int id;
     private String name;
     private Date date;
-    private int startTime; 
-    private int endTime;
+    private Time startTime; 
+    private Time endTime;
     private String description;
     private int price;
     private String type;
@@ -30,7 +33,7 @@ public class Trip {
     private TourCompany tourCompany;
     private int availablePlaces;
 
-    public Trip(int id, String name, Date date, int startTime, int endTime, String description, int price, String type, String Area, String Location, int maxTravelers, boolean familyFriendly, boolean accessible, TourCompany tourCompany, int availablePlaces) {
+    public Trip(int id, String name, Date date, Time startTime, Time endTime, String description, int price, String type, String Area, String Location, int maxTravelers, boolean familyFriendly, boolean accessible, TourCompany tourCompany, int availablePlaces) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -60,11 +63,11 @@ public class Trip {
         return date;
     }
 
-    public int getStartTime() {
+    public Time getStartTime() {
         return startTime;
     }
 
-    public int getEndTime() {
+    public Time getEndTime() {
         return endTime;
     }
 
