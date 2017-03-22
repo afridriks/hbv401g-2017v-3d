@@ -5,7 +5,10 @@
  */
 package view;
 
-//import controller.TripController;
+import controller.TripController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,13 +17,13 @@ package view;
 public class SearchPanel extends javax.swing.JFrame {
 
     private ResultsPanel panel;
-    //private final TripController controller;
+    private final TripController controller;
     
     /**
      * Creates new form SearchWindow
      */
-    public SearchPanel() {
-      //  controller = new TripController();
+    public SearchPanel() throws SQLException {
+        controller = new TripController();
         initComponents();
     }
     
@@ -232,7 +235,11 @@ public class SearchPanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SearchPanel().setVisible(true);
+                try {
+                    new SearchPanel().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SearchPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

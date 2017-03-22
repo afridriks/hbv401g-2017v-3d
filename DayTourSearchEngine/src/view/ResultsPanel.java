@@ -5,6 +5,8 @@
  */
 package view;
 
+import model.Trip;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
@@ -16,7 +18,7 @@ import javax.swing.BorderFactory;
 public class ResultsPanel extends javax.swing.JPanel {
 
     
-    //private Trips[] trips;
+    private Trip[] trips;
     
     /**
      * Creates new form ResultsWindow

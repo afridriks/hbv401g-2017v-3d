@@ -6,7 +6,8 @@
 package view;
 
 import model.Trip;
-//import controller.TripController;
+import controller.TripController;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,15 +16,15 @@ import model.Trip;
 public class BookTripPanel extends javax.swing.JPanel {
 
     private final Trip trip;
-    //private final TripController controller;
+    private final TripController controller;
     
     /**
      * Creates new form BookTripPanel
      * @param trip
      */
-    public BookTripPanel(Trip newTrip) {
+    public BookTripPanel(Trip newTrip) throws SQLException {
         trip = newTrip;
-        //controller = new TripController();
+        controller = new TripController();
         initComponents();
     }
     
