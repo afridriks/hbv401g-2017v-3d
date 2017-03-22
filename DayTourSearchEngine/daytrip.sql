@@ -10,7 +10,7 @@ DROP TABLE if exists Location;
 DROP TABLE if exists Type;
 
 CREATE TABLE TourCompany (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   name varchar(50),
   phone int,
   address varchar(50),
@@ -35,7 +35,7 @@ INSERT INTO "Area" VALUES(6,"Highlands of Iceland");
 
 
 CREATE TABLE Location (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   areaId int REFERENCES Area(id),
   name varchar(50)
 );
@@ -43,7 +43,7 @@ CREATE TABLE Location (
 INSERT INTO Location VALUES(1,5,"Selfoss");
 
 CREATE TABLE Type (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   name varchar(50)
 );
 
@@ -55,7 +55,7 @@ INSERT INTO Type VALUES(5,"Beer Trips");
 INSERT INTO Type VALUES(6,"Food Trips");
 
 CREATE TABLE Trip (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   name varchar(50),
   date DATE,
   startTime TIME, 
@@ -75,7 +75,7 @@ INSERT INTO "Trip" VALUES(1,'Hestaferðin','2017-06-22','10:00','13:00','Skemmti
 INSERT INTO "Trip" VALUES(2,'Hestaferðin','2017-06-22','10:00','13:00','Skemmtileg hestaferð',0,0,15000,2,1,10,10,1);
 
 CREATE TABLE Customer (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   name varchar(50),
   phone int,
   address varchar(50),
@@ -83,7 +83,7 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE Booking (
-  id int PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   customerId int REFERENCES Customer(id),
   tripId int REFERENCES Trip(id),
   numTravelers int,
