@@ -118,6 +118,31 @@ public final class DBTripManager {
         return res;
     }
     
+    public void updateAvailablePlaces(Trip t) throws ClassNotFoundException {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+            myStmt = myConn.prepareStatement("UPDATE Trip SET availableplaces = ? WHERE id = ?;");
+            myStmt.setInt(1,t.getAvailablePlaces());
+            myStmt.setInt(2,t.getId());            
+            
+            myStmt.setQueryTimeout(30);
+            
+            myStmt.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(myConn != null)
+                    myConn.close();
+            } catch(SQLException e) {
+                // connection close failed.
+                System.err.println(e);
+            }
+        }
+    }
+ 
     
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -125,7 +150,7 @@ public final class DBTripManager {
         Trip[] trips = man.search("hest",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,10000,20000,2,1);
         
         for(Trip t: trips) {
-            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate());
+            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName());
         }
     }
     

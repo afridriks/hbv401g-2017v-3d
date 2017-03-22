@@ -35,6 +35,8 @@ public class TripController {
         Customer customer = new Customer(0, name, phone, address, email);
         Booking booking = new Booking(0, customer, trip, numTravelers, hotelPickup, active);
         bookingManager.bookTrip(booking);
+        trip.setAvailablePlaces(trip.getAvailablePlaces() - numTravelers);
+        tripManager.updateAvailablePlaces(trip);
     }
     
 }

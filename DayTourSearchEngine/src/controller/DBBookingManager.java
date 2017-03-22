@@ -17,7 +17,7 @@ import model.Booking;
 public class DBBookingManager {
 
     private Connection myConn;
-    private Statement myStmt;
+    private PreparedStatement myStmt;
     private ResultSet myRs;
     private final String dbname;
     
@@ -29,8 +29,17 @@ public class DBBookingManager {
         try {
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
-            myStmt = myConn.createStatement();
-            myStmt.executeUpdate("Insert into Bookings ...");
+            myStmt = myConn.prepareStatement("INSERT INTO Booking(customerId, tripId, numTravelers, hotelPickup, active) VALUES(?,?,?,?,?);");
+            myStmt.setInt(1,booking.getCustomer().getId());
+            myStmt.setInt(2,booking.getTrip().getId());
+            myStmt.setInt(3,booking.getNumTravelers());
+            myStmt.setInt(4,(booking.isHotelPickup() ? 1 : 0));
+            myStmt.setInt(5,(booking.isActive() ? 1 : 0));
+
+            myStmt.setQueryTimeout(30);
+            
+            myStmt.executeQuery();
+            
         } catch (SQLException ex) {
             Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -47,9 +56,14 @@ public class DBBookingManager {
     public void cancelBooking(Booking booking) throws ClassNotFoundException {
         try {
             Class.forName("org.sqlite.JDBC");
-            myConn = DriverManager.getConnection("jdbc:sqlite:daytrips.db");
-            myStmt = myConn.createStatement();
-            myStmt.executeUpdate("UPDATE Bookings SET active = false WHERE id == "+booking.getId());
+            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+            myStmt = myConn.prepareStatement("UPDATE Booking SET active = 0 WHERE id = ?;");
+            myStmt.setInt(1,booking.getId());
+            
+            myStmt.setQueryTimeout(30);
+            
+            myStmt.executeQuery();
+
         } catch (SQLException ex) {
             Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -61,6 +75,10 @@ public class DBBookingManager {
                 System.err.println(e);
             }
         }
+    }
+    
+    public static void main(String[] args) {
+        // skrifa test hér
     }
 
 }
