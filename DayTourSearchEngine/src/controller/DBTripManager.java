@@ -19,15 +19,16 @@ public final class DBTripManager {
     private Connection myConn;
     private Statement myStmt;
     private ResultSet myRs;
+    private final String dbname;
     
-    public DBTripManager() throws SQLException {
-        // ekkert hér
+    public DBTripManager(String dbname) throws SQLException {
+        this.dbname = dbname;
     }
  
     public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String area, String location) throws SQLException, ClassNotFoundException {
         try {
             Class.forName("org.sqlite.JDBC");
-            myConn = DriverManager.getConnection("jdbc:sqlite:daytrips.db");
+            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery("SELECT * FROM Trips");
         } catch (SQLException ex) {

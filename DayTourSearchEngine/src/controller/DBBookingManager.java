@@ -19,15 +19,16 @@ public class DBBookingManager {
     private Connection myConn;
     private Statement myStmt;
     private ResultSet myRs;
+    private final String dbname;
     
-    public DBBookingManager() {
-        // ekkert hér
+    public DBBookingManager(String dbname) {
+        this.dbname = dbname;
     }
     
     public void bookTrip(Booking booking) throws ClassNotFoundException {
         try {
             Class.forName("org.sqlite.JDBC");
-            myConn = DriverManager.getConnection("jdbc:sqlite:daytrips.db");
+            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             myStmt = myConn.createStatement();
             myStmt.executeUpdate("Insert into Bookings ...");
         } catch (SQLException ex) {

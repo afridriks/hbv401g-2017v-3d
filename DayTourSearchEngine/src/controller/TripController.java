@@ -22,8 +22,8 @@ public class TripController {
     private final DBBookingManager bookingManager;
     
     public TripController() throws SQLException {
-        tripManager = new DBTripManager();
-        bookingManager = new DBBookingManager();
+        tripManager = new DBTripManager("daytrips.db");
+        bookingManager = new DBBookingManager("daytrips.db");
     }
     
     public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String area, String location) throws SQLException, ClassNotFoundException {

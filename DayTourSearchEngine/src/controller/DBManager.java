@@ -32,6 +32,8 @@ public class DBManager {
             connect();
             myStmt = myConn.createStatement();
             
+            myStmt.executeUpdate("Drop Table if exists users");
+            
             myStmt.executeUpdate("Create Table users ( name varchar(30), phone int)");
             myStmt.executeUpdate("Insert into users values ( 'Sigurlaug', 6983135)");
             myStmt.executeUpdate("Insert into users values ( 'Einar', 8695581)");
