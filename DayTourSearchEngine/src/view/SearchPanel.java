@@ -5,6 +5,7 @@
  */
 package view;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controller.TripController;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class SearchPanel extends javax.swing.JFrame {
      * 
      */
     private void search() {
-        
+
     }
 
     /**
@@ -97,13 +98,11 @@ public class SearchPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchButton, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(areaCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(searchBox, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(areaCombo, javax.swing.GroupLayout.Alignment.CENTER, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(searchBox, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(typeCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );

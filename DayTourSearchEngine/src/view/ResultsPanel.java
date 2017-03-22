@@ -23,7 +23,7 @@ public class ResultsPanel extends javax.swing.JPanel {
     /**
      * Creates new form ResultsWindow
      */
-    public ResultsPanel(/*Trips[] trips*/) {
+    public ResultsPanel(/*Trip[] trips*/) {
         initComponents();
     }
     
