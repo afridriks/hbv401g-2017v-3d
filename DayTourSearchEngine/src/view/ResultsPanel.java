@@ -25,6 +25,7 @@ public class ResultsPanel extends javax.swing.JPanel {
      */
     public ResultsPanel(/*Trip[] trips*/) {
         initComponents();
+        jButton1.setVisible(true);
     }
     
     private void showDetails(int tripId) {
