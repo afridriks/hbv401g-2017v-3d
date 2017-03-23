@@ -40,7 +40,7 @@ public class SearchPanel extends javax.swing.JFrame {
     private void search() throws SQLException, ClassNotFoundException {
         
         String tripName = "Hestaferðin";
-        Date date = new Date(2017, 6, 22);
+        Date date = new Date(117, 05, 22);
         Time startTime = new Time(9, 0, 0);
         Time endTime = new Time(18, 0, 0);
         String description = "Skemmtileg hestaferð";
@@ -49,11 +49,10 @@ public class SearchPanel extends javax.swing.JFrame {
         int minPrice = 10000;
         int maxPrice = 20000;
         int type = 2; // "Hestaferð"
-        int location = 1;  // "Selfoss"
-        
+        int location = 1;  // "Selfoss"        
         
         Trip[] results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
-        for(Trip t : results) { System.out.println(t.getDescription()); }
+        for(Trip t : results) { System.out.println(t.getDescription());   }
     }
 
     /**
