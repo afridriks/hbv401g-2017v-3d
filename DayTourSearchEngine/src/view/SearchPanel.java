@@ -15,6 +15,8 @@ import java.sql.Time;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.UIManager;
 
 
@@ -82,13 +84,25 @@ public class SearchPanel extends javax.swing.JFrame {
         areaCombo = new javax.swing.JComboBox<>();
         searchButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        familyFriendlyButton = new javax.swing.JRadioButton();
+        areaLabel = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
+        accessibleButton = new javax.swing.JRadioButton();
         dateChooser = new datechooser.beans.DateChooserPanel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
+        startTimeLabel = new javax.swing.JLabel();
+        java.util.Date startTimeSpinnerDate = new Date(System.currentTimeMillis());
+        SpinnerDateModel sm = new SpinnerDateModel( startTimeSpinnerDate,
+            null,
+            null,
+            Calendar.HOUR_OF_DAY);
+        startTimeSpinner = new javax.swing.JSpinner(sm);
+        endTimeLabel = new javax.swing.JLabel();
+        java.util.Date endTimeSpinnerDate = new Date(System.currentTimeMillis());
+        SpinnerDateModel em = new SpinnerDateModel( endTimeSpinnerDate,
+            null,
+            null,
+            Calendar.HOUR_OF_DAY);
+        endTimeSpinner = new javax.swing.JSpinner(em);
         resultsPanel = new view.ResultsPanel();
         myndJLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -122,13 +136,13 @@ public class SearchPanel extends javax.swing.JFrame {
 
         titleLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/dayTrips.jpg"))); // NOI18N
 
-        jRadioButton1.setText("Family friendly");
+        familyFriendlyButton.setText("Family friendly");
 
-        jLabel1.setText("Area");
+        areaLabel.setText("Area");
 
-        jLabel2.setText("Type");
+        typeLabel.setText("Type");
 
-        jRadioButton2.setText("Accessible");
+        accessibleButton.setText("Accessible");
 
         dateChooser.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
             public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
@@ -136,7 +150,18 @@ public class SearchPanel extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Tími");
+        startTimeLabel.setText("Start time:");
+
+        JSpinner.DateEditor de = new JSpinner.DateEditor(startTimeSpinner,
+            "HH:mm");
+        startTimeSpinner.setEditor(de);
+
+        endTimeLabel.setText("End time:");
+
+        JSpinner.DateEditor dee = new JSpinner.DateEditor(endTimeSpinner,
+            "HH:mm");
+        endTimeSpinner.setEditor(dee);
+        // Code adding the component to the parent container - not shown here
 
         javax.swing.GroupLayout UpperPanelLayout = new javax.swing.GroupLayout(UpperPanel);
         UpperPanel.setLayout(UpperPanelLayout);
@@ -145,26 +170,30 @@ public class SearchPanel extends javax.swing.JFrame {
             .addGroup(UpperPanelLayout.createSequentialGroup()
                 .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(UpperPanelLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(titleLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(UpperPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(27, 27, 27)
                         .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accessibleButton)
+                            .addComponent(familyFriendlyButton)
                             .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton1))
-                        .addGap(60, 60, 60)
-                        .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                            .addGroup(UpperPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(UpperPanelLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(typeLabel))
+                    .addGroup(UpperPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(areaLabel)))
+                .addGap(39, 39, 39)
+                .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(UpperPanelLayout.createSequentialGroup()
+                        .addComponent(startTimeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(startTimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(endTimeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(endTimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 55, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
             .addGroup(UpperPanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -173,33 +202,41 @@ public class SearchPanel extends javax.swing.JFrame {
                     .addGroup(UpperPanelLayout.createSequentialGroup()
                         .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(UpperPanelLayout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(titleLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         UpperPanelLayout.setVerticalGroup(
             UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UpperPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(UpperPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(10, 10, 10)
-                        .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel2)
+                        .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(UpperPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
+                        .addComponent(areaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(typeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton1))
-                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(accessibleButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(startTimeLabel)
+                    .addComponent(startTimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endTimeLabel)
+                    .addComponent(endTimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(familyFriendlyButton))
                 .addGap(18, 18, 18)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
@@ -253,7 +290,7 @@ public class SearchPanel extends javax.swing.JFrame {
                         .addComponent(UpperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(myndJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,23 +373,25 @@ public class SearchPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UpperPanel;
     private javax.swing.JMenu aboutMenu;
+    private javax.swing.JRadioButton accessibleButton;
     private javax.swing.JComboBox<String> areaCombo;
+    private javax.swing.JLabel areaLabel;
     private datechooser.beans.DateChooserPanel dateChooser;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JLabel endTimeLabel;
+    private javax.swing.JSpinner endTimeSpinner;
     private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JRadioButton familyFriendlyButton;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JLabel myndJLabel;
     private javax.swing.JPanel resultsPanel;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
+    private javax.swing.JLabel startTimeLabel;
+    private javax.swing.JSpinner startTimeSpinner;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JComboBox<String> typeCombo;
+    private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
 }
