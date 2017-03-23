@@ -29,7 +29,7 @@ public class BookTripPanel extends javax.swing.JPanel {
     }
     
     private void bookTrip() {
-        
+        //controller.bookTrip();
     }
     
     
