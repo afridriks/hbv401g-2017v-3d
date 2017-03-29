@@ -26,12 +26,18 @@ public class TripController {
         bookingManager = new DBBookingManager("daytrips.db");
     }
     
-    public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, int type, int location) throws SQLException, ClassNotFoundException {
+    public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
+        if(tripName == null || date == null || startTime == null || endTime == null || description == null || familyFriendly == null || accessible == null || minPrice > maxPrice || minPrice < 0 || maxPrice < 0) {
+            throw new IllegalArgumentException("Invalid argument");
+        }
         results = tripManager.search(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         return results;
     }
     
     public void bookTrip(String name, int phone, String address, String email, Trip trip, int numTravelers, Boolean hotelPickup, Boolean active) throws ClassNotFoundException {
+        if(name == null || phone < 0 || address == null || email == null || trip == null || numTravelers <= 0 || hotelPickup == null || active == null) {
+            throw new IllegalArgumentException("Invalid argument");
+        }        
         Customer customer = new Customer(0, name, phone, address, email);
         Booking booking = new Booking(0, customer, trip, numTravelers, hotelPickup, active);
         bookingManager.bookTrip(booking);

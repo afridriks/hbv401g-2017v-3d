@@ -27,7 +27,7 @@ public final class DBTripManager {
         this.dbname = dbname;
     }
  
-    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, int type, int location) throws SQLException, ClassNotFoundException {
+    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
         ArrayList<Trip> trips;
         trips = new ArrayList<>();
         try {
@@ -45,23 +45,19 @@ public final class DBTripManager {
               	//System.out.println(myRs.getInt("id")+myRs.getString("name")+myRs.getInt("phone")+myRs.getString("address")+myRs.getString("email"));
             }            
   
-            // ef familyFriendly er TRUE þá viljum við leita að "familyFriendly = 1"
-            // ef familyFriendly er FALSE þá viljum við ekki breyta leitarstrengnum því
-            // þá erum við að takmarka okkur við trips sem eru EKKI familyFriendly.
-            // eins með accessible
-            String familyFriendlyAccessible = makeFFAString(familyFriendly, accessible);
-            
             myStmt = myConn.prepareStatement("SELECT * FROM Trip "
-                    + "WHERE name LIKE ? "
-                    + "AND description LIKE ? "
+                    + (tripName.length() == 0 ? "" : "WHERE name LIKE ? ")
+                    + (description.length() == 0 ? "": "AND description LIKE ? ")
                     + "AND date = ? "
                     + "AND startTime >= ? "
                     + "AND startTime <= ? "
+                    + (familyFriendly ? "AND familyFriendly = 1 " : "")
+                    + (accessible ? "AND accessible = 1 " : "")
                     + "AND price >= ? "
                     + "AND price <= ? "
-                    + "AND typeId = ? "
-                    + "AND locationId = ? "
-                    + familyFriendlyAccessible + ";");
+                    + (type==null ? "" : "AND typeId = ? ")
+                    + (location==null ? "": "AND locationId = ? ")
+                    + ";");
             myStmt.setString(1,"%"+tripName+"%");
             myStmt.setString(2,"%"+description+"%");
             myStmt.setString(3,date.toString());
@@ -69,8 +65,8 @@ public final class DBTripManager {
             myStmt.setString(5,endTime.toString());
             myStmt.setString(6,Integer.toString(minPrice));
             myStmt.setString(7,Integer.toString(maxPrice));
-            myStmt.setString(8,Integer.toString(type));
-            myStmt.setString(9,Integer.toString(location));
+            if(type!=null) myStmt.setString(8,Integer.toString(type));
+            if(location!=null) myStmt.setString(9,Integer.toString(location));
             myStmt.setQueryTimeout(30);
             
             myRs = myStmt.executeQuery();
@@ -92,7 +88,7 @@ public final class DBTripManager {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBTripManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if(myConn != null)
@@ -102,23 +98,10 @@ public final class DBTripManager {
                 System.err.println(e);
             }
         }
-        
-        // hér þarf að breyta myRs í Trip[]
-        
+
         return trips.toArray(new Trip[0]);
     }
-    
-    private String makeFFAString(Boolean a, Boolean b) {
-        String res = "";
-        if(a) {
-            res = res + "AND familyFriendly = 1";
-        }
-        if(b) {
-            res = res + "AND accessible = 1";
-        }
-        return res;
-    }
-    
+   
     public void updateAvailablePlaces(Trip t) throws ClassNotFoundException {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -132,7 +115,7 @@ public final class DBTripManager {
             myStmt.executeQuery();
 
         } catch (SQLException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBTripManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if(myConn != null)

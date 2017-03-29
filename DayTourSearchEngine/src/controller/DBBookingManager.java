@@ -41,7 +41,7 @@ public class DBBookingManager {
             myStmt.executeQuery();
             
         } catch (SQLException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBBookingManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if(myConn != null)
@@ -65,7 +65,7 @@ public class DBBookingManager {
             myStmt.executeQuery();
 
         } catch (SQLException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBBookingManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if(myConn != null)
