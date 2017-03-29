@@ -11,11 +11,11 @@ package model;
  */
 public class Booking {
     
-    private int id;
-    private Customer customer;
-    private Trip trip;
-    private int numTravelers;
-    private boolean hotelPickup;
+    private final int id;
+    private final Customer customer;
+    private final Trip trip;
+    private final int numTravelers;
+    private final boolean hotelPickup;
     private boolean active;
 
     public Booking(int id, Customer customer, Trip trip, int numTravelers, boolean hotelPickup, boolean active) {

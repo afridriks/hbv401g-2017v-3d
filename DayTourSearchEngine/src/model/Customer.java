@@ -11,11 +11,11 @@ package model;
  */
 public class Customer {
     
-    private int id;
-    private String name;
-    private int phoneNumber;
-    private String address;
-    private String email;
+    private final int id;
+    private final String name;
+    private final int phoneNumber;
+    private final String address;
+    private final String email;
 
     public Customer(int id, String name, int phoneNumber, String address, String email) {
         this.id = id;

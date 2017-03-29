@@ -17,20 +17,20 @@ import java.sql.Time;
  */
 public class Trip {
     
-    private int id;
-    private String name;
-    private Date date;
-    private Time startTime; 
-    private Time endTime;
-    private String description;
-    private int price;
-    private String type;
-    private String Area;
-    private String Location;
-    private int maxTravelers;
-    private boolean familyFriendly;
-    private boolean accessible;
-    private TourCompany tourCompany;
+    private final int id;
+    private final String name;
+    private final Date date;
+    private final Time startTime; 
+    private final Time endTime;
+    private final String description;
+    private final int price;
+    private final String type;
+    private final String Area;
+    private final String Location;
+    private final int maxTravelers;
+    private final boolean familyFriendly;
+    private final boolean accessible;
+    private final TourCompany tourCompany;
     private int availablePlaces;
 
     public Trip(int id, String name, Date date, Time startTime, Time endTime, String description, int price, String type, String Area, String Location, int maxTravelers, boolean familyFriendly, boolean accessible, TourCompany tourCompany, int availablePlaces) {
