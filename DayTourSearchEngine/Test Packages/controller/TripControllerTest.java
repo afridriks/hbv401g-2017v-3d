@@ -44,25 +44,24 @@ public class TripControllerTest {
      * Test of searchTrips method, of class TripController.
      */
     @Test
-    public void testSearchTrips() throws Exception {
-        System.out.println("searchTrips");
-        String tripName = "";
-        Date date = null;
-        Time startTime = null;
-        Time endTime = null;
-        String description = "";
-        Boolean familyFriendly = null;
-        Boolean accessible = null;
-        int minPrice = 0;
-        int maxPrice = 0;
-        int type = 0;
-        int location = 0;
-        TripController instance = new TripController();
-        Trip[] expResult = null;
-        Trip[] result = instance.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSort() throws Exception {
+
+    }
+    
+    /**
+     * Test of searchTrips method, of class TripController.
+     */
+    @Test
+    public void testSort2() throws Exception {
+
+    }
+    
+    /**
+     * Test of searchTrips method, of class TripController.
+     */
+    @Test
+    public void testSort3() throws Exception {
+
     }
 
     /**
@@ -70,19 +69,7 @@ public class TripControllerTest {
      */
     @Test
     public void testBookTrip() throws Exception {
-        System.out.println("bookTrip");
-        String name = "";
-        int phone = 0;
-        String address = "";
-        String email = "";
-        Trip trip = null;
-        int numTravelers = 0;
-        Boolean hotelPickup = null;
-        Boolean active = null;
-        TripController instance = new TripController();
-        instance.bookTrip(name, phone, address, email, trip, numTravelers, hotelPickup, active);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
     
 }
