@@ -28,7 +28,8 @@ public final class DBTripManager {
     }
  
     public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, int type, int location) throws SQLException, ClassNotFoundException {
-        ArrayList<Trip> trips = new ArrayList<>();
+        ArrayList<Trip> trips;
+        trips = new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);

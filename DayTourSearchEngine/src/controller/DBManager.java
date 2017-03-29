@@ -22,8 +22,7 @@ public class DBManager {
             Class.forName("org.sqlite.JDBC");      
             myConn = DriverManager.getConnection("jdbc:sqlite:trips.db");
         }
-        catch (Exception ex){
-            ex.printStackTrace();
+        catch (ClassNotFoundException | SQLException ex){
         }
     }
     

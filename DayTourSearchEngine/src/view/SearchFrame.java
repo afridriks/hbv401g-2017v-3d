@@ -8,7 +8,6 @@ package view;
 
 //import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controller.TripController;
-import java.awt.BorderLayout;
 import model.Trip;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -16,12 +15,8 @@ import java.sql.Time;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
-import javax.swing.UIManager;
 
 
 /**
@@ -35,6 +30,7 @@ public class SearchFrame extends javax.swing.JFrame {
     
     /**
      * Creates new form SearchWindow
+     * @throws java.sql.SQLException
      */
     public SearchFrame() throws SQLException {
         controller = new TripController();
@@ -441,13 +437,11 @@ public class SearchFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new SearchFrame().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new SearchFrame().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
