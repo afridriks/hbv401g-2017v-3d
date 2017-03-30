@@ -32,7 +32,7 @@ public class MockDBTripManager {
         Trip[] trips = new Trip[10];
         TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
         for(int i = 0; i < 10; i++){
-            Trip trip = new Trip(i, "Ferð"+i, new Date(117, 05, 22+i), new Time(9, 0, 0), new Time(18, 0, 0), "", 1000, "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20-i);
+            Trip trip = new Trip(i, "Ferð"+i, new Date(117, 05, 22+i), new Time(9+i, 0, 0), new Time(18+i, 0, 0), "", 1000+(i*100), "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20-i);
             trips[i] = trip;
         }
         return trips;

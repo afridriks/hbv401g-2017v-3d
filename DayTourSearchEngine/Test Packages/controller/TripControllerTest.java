@@ -86,7 +86,17 @@ public class TripControllerTest {
      */
     @Test
     public void testsortTripsByTime() throws Exception {
-
+        TripController instance = new TripController();
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        Trip[] sortedTrips = instance.sortTripsByTime(trips);
+        
+        Time currTime;
+        Time prevTime = new Time(0, 0, 0);
+        
+        for(Trip t : sortedTrips){
+            currTime = t.getStartTime();
+            assertTrue(currTime.after(prevTime));
+        }
     }
     
     /**
