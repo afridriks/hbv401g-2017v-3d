@@ -41,7 +41,7 @@ public class TripControllerTest {
     }
 
     /**
-     * Test of searchTrips method, of class TripController.
+     * Test of sortTripsByName method, of class TripController.
      */
     @Test
     public void testsortTripsByName() throws Exception {
@@ -49,7 +49,7 @@ public class TripControllerTest {
     }
     
     /**
-     * Test of searchTrips method, of class TripController.
+     * Test of sortTripsByTime method, of class TripController.
      */
     @Test
     public void testsortTripsByTime() throws Exception {
@@ -57,7 +57,7 @@ public class TripControllerTest {
     }
     
     /**
-     * Test of searchTrips method, of class TripController.
+     * Test of sortTripsByPrice method, of class TripController.
      */
     @Test
     public void testsortTripsByPrice() throws Exception {
