@@ -103,8 +103,37 @@ public class TripControllerTest {
      * Test of sortTripsByPrice method, of class TripController.
      */
     @Test
-    public void testsortTripsByPrice() throws Exception {
-
+    public void testsortTripsByPrice_ValidInput() throws Exception {
+        TripController instance = new TripController();
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        
+        Trip[] sortedTrips = instance.sortTripsByName(trips);
+        
+        int currPrice = 0;
+        int prevPrice = 0;
+        
+        for(Trip t : sortedTrips){
+            currPrice = t.getPrice();
+            if(prevPrice != 0)
+                assertTrue(currPrice >= prevPrice);
+            prevPrice = currPrice;
+        }
+        
+    }
+    
+    @Test
+    public void testsortTripsByPrice_InvalidInput() throws Exception {
+        TripController instance = new TripController();
+        Trip[] trips = new Trip[0];
+        boolean thrown = false;
+        try{
+            Trip[] sortedTrips = instance.sortTripsByName(trips);
+        }
+        catch(IllegalArgumentException ex){
+            thrown = true;
+        }
+        
+        assertTrue(thrown);
     }
 
     /**
