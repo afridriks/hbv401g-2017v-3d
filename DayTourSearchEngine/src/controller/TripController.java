@@ -45,4 +45,16 @@ public class TripController {
         tripManager.updateAvailablePlaces(trip);
     }
     
+    public Trip[] sortTripsByName(Trip[] trips) {
+        return null;
+    }
+    
+    public Trip[] sortTripsByTime(Trip[] trips) {
+        return null;
+    }
+    
+    public Trip[] sortTripsByPrice(Trip[] trips) {
+        return null;
+    }
+    
 }
