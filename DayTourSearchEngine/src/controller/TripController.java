@@ -27,34 +27,36 @@ public class TripController {
     }
     
     public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
-        if(tripName == null || date == null || startTime == null || endTime == null || description == null || familyFriendly == null || accessible == null || minPrice > maxPrice || minPrice < 0 || maxPrice < 0) {
-            throw new IllegalArgumentException("Invalid argument");
-        }
+        //if(tripName == null || date == null || startTime == null || endTime == null || description == null || familyFriendly == null || accessible == null || minPrice > maxPrice || minPrice < 0 || maxPrice < 0) {
+          //  throw new IllegalArgumentException("Invalid argument");
+        //}
         results = tripManager.search(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         return results;
     }
     
-    public void bookTrip(String name, int phone, String address, String email, Trip trip, int numTravelers, Boolean hotelPickup, Boolean active) throws ClassNotFoundException {
-        if(name == null || phone < 0 || address == null || email == null || trip == null || numTravelers <= 0 || hotelPickup == null || active == null) {
-            throw new IllegalArgumentException("Invalid argument");
-        }        
+    public Trip bookTrip(String name, int phone, String address, String email, Trip trip, int numTravelers, Boolean hotelPickup, Boolean active) throws ClassNotFoundException {
+        //if(name == null || phone < 0 || address == null || email == null || trip == null || numTravelers <= 0 || hotelPickup == null || active == null) {
+            //throw new IllegalArgumentException("Invalid argument");
+        //}        
         Customer customer = new Customer(0, name, phone, address, email);
         Booking booking = new Booking(0, customer, trip, numTravelers, hotelPickup, active);
         bookingManager.bookTrip(booking);
         trip.setAvailablePlaces(trip.getAvailablePlaces() - numTravelers);
         tripManager.updateAvailablePlaces(trip);
+        return trip;
     }
     
     public Trip[] sortTripsByName(Trip[] trips) {
-        return null;
+        if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
+        return trips;
     }
     
     public Trip[] sortTripsByTime(Trip[] trips) {
-        return null;
+        return trips;
     }
     
     public Trip[] sortTripsByPrice(Trip[] trips) {
-        return null;
+        return trips;
     }
     
 }

@@ -7,6 +7,9 @@ package controller;
 
 import java.sql.Date;
 import java.sql.Time;
+import model.Booking;
+import model.Customer;
+import model.TourCompany;
 import model.Trip;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,8 +47,38 @@ public class TripControllerTest {
      * Test of sortTripsByName method, of class TripController.
      */
     @Test
-    public void testsortTripsByName() throws Exception {
-
+    public void testsortTripsByName_ValidInput() throws Exception {
+        TripController instance = new TripController();
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        
+        Trip[] sortedTrips = instance.sortTripsByName(trips);
+        
+        String currName = "";
+        String prevName = "";
+        
+        for(Trip t : sortedTrips){
+            currName = t.getName();
+            if(prevName != "")
+                assertTrue(currName.compareTo(prevName) >= 0);
+            prevName = currName;
+        }
+        
+    }
+    
+    @Test
+    public void testsortTripsByName_InvalidInput() throws Exception {
+        TripController instance = new TripController();
+        Trip[] trips = new Trip[0];
+        boolean thrown = false;
+        try{
+            Trip[] sortedTrips = instance.sortTripsByName(trips);
+        }
+        catch(IllegalArgumentException ex){
+            thrown = true;
+        }
+        
+        assertTrue(thrown);
+        
     }
     
     /**
@@ -69,7 +102,13 @@ public class TripControllerTest {
      */
     @Test
     public void testBookTrip() throws Exception {
-
-    }
-    
+        TripController instance = new TripController();
+        
+        TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
+        Trip trip = new Trip(1, "Ferð", new Date(117, 05, 22), new Time(9, 0, 0), new Time(18, 0, 0), "", 1000, "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20);
+        
+        Trip trip2 = instance.bookTrip("Jón Jónsson", 334234, "Jónsgeisli 5", "jon@jon.is", trip, 3, Boolean.TRUE, Boolean.TRUE);
+        
+        assertTrue(trip2.getAvailablePlaces() == 17);
+    }    
 }
