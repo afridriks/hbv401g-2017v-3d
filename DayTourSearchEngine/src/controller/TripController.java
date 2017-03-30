@@ -18,12 +18,12 @@ import model.*;
 public class TripController {
     
     private Trip[] results;
-    private final DBTripManager tripManager;
-    private final DBBookingManager bookingManager;
+    private final MockDBTripManager tripManager;
+    private final MockDBBookingManager bookingManager;
     
     public TripController() throws SQLException {
-        tripManager = new DBTripManager("daytrips.db");
-        bookingManager = new DBBookingManager("daytrips.db");
+        tripManager = new MockDBTripManager("daytrips.db");
+        bookingManager = new MockDBBookingManager("daytrips.db");
     }
     
     public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
