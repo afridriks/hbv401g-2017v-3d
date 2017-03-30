@@ -56,6 +56,7 @@ public class TripController {
     }
     
     public Trip[] sortTripsByPrice(Trip[] trips) {
+        if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
         return trips;
     }
     
