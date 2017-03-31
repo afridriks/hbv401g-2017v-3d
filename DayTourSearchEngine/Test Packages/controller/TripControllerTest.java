@@ -111,6 +111,26 @@ public class TripControllerTest {
         }
     }
     
+    @Test
+    public void testSortTripsByTime_InvalidInput() throws Exception {
+        //Arrange
+        TripController instance = new TripController();
+        Trip[] trips = new Trip[0];
+        boolean thrown = false;
+        
+        //Act
+        try{
+            Trip[] sortedTrips = instance.sortTripsByTime(trips);
+        }
+        catch(IllegalArgumentException ex){
+            thrown = true;
+        }
+        
+        //Assert
+        assertTrue(thrown);
+        
+    }
+    
     /**
      * Test of sortTripsByPrice method, of class TripController.
      */
@@ -121,7 +141,7 @@ public class TripControllerTest {
         Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
         
         //Act
-        Trip[] sortedTrips = instance.sortTripsByName(trips);
+        Trip[] sortedTrips = instance.sortTripsByPrice(trips);
         
         //Assert
         int currPrice = 0;
@@ -145,7 +165,7 @@ public class TripControllerTest {
         
         //Act
         try{
-            Trip[] sortedTrips = instance.sortTripsByName(trips);
+            Trip[] sortedTrips = instance.sortTripsByPrice(trips);
         }
         catch(IllegalArgumentException ex){
             thrown = true;
