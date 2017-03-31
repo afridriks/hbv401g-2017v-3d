@@ -42,6 +42,14 @@ public class ResultsPanel extends javax.swing.JPanel {
     public JScrollPane Show(){
         TableModel model = new TripTableModel(trips);
         JTable table = new JTable(model);
+        table.removeColumn(table.getColumnModel().getColumn(14));
+        table.removeColumn(table.getColumnModel().getColumn(12)); 
+        table.removeColumn(table.getColumnModel().getColumn(11)); 
+        table.removeColumn(table.getColumnModel().getColumn(10)); 
+        table.removeColumn(table.getColumnModel().getColumn(7)); 
+        table.removeColumn(table.getColumnModel().getColumn(6)); 
+        table.removeColumn(table.getColumnModel().getColumn(5)); 
+        table.removeColumn(table.getColumnModel().getColumn(0)); 
         JScrollPane panel = new JScrollPane(table);
         return panel;
     }
