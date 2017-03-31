@@ -161,7 +161,7 @@ public class TripControllerTest {
      * Test of bookTrip method, of class TripController.
      */
     @Test
-    public void testBookTrip() throws Exception {
+    public void testBookTrip_ValidInput() throws Exception {
         //Arrange
         TripController instance = new TripController();
         
