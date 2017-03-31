@@ -7,8 +7,6 @@ package controller;
 
 import java.sql.Date;
 import java.sql.Time;
-import model.Booking;
-import model.Customer;
 import model.TourCompany;
 import model.Trip;
 import org.junit.After;
