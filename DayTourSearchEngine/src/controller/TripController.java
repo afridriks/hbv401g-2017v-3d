@@ -35,9 +35,9 @@ public class TripController {
     }
     
     public Trip bookTrip(String name, int phone, String address, String email, Trip trip, int numTravelers, Boolean hotelPickup, Boolean active) throws ClassNotFoundException {
-        //if(name == null || phone < 0 || address == null || email == null || trip == null || numTravelers <= 0 || hotelPickup == null || active == null) {
-            //throw new IllegalArgumentException("Invalid argument");
-        //}        
+        if(name == null || phone < 0 || address == null || email == null || trip == null || numTravelers <= 0 || hotelPickup == null || active == null) {
+            throw new IllegalArgumentException("Invalid argument");
+        }        
         Customer customer = new Customer(0, name, phone, address, email);
         Booking booking = new Booking(0, customer, trip, numTravelers, hotelPickup, active);
         bookingManager.bookTrip(booking);

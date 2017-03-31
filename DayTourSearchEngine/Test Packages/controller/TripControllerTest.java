@@ -47,18 +47,22 @@ public class TripControllerTest {
      * Test of sortTripsByName method, of class TripController.
      */
     @Test
-    public void testsortTripsByName_ValidInput() throws Exception {
+    public void testSortTripsByName_ValidInput() throws Exception {
+        
+        //Arrange
         TripController instance = new TripController();
         Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
         
+        //Act        
         Trip[] sortedTrips = instance.sortTripsByName(trips);
         
+        //Assert
         String currName = "";
         String prevName = "";
         
         for(Trip t : sortedTrips){
             currName = t.getName();
-            if(prevName != "")
+            if(!"".equals(prevName))
                 assertTrue(currName.compareTo(prevName) >= 0);
             prevName = currName;
         }
@@ -66,10 +70,13 @@ public class TripControllerTest {
     }
     
     @Test
-    public void testsortTripsByName_InvalidInput() throws Exception {
+    public void testSortTripsByName_InvalidInput() throws Exception {
+        //Arrange
         TripController instance = new TripController();
         Trip[] trips = new Trip[0];
         boolean thrown = false;
+        
+        //Act
         try{
             Trip[] sortedTrips = instance.sortTripsByName(trips);
         }
@@ -77,6 +84,7 @@ public class TripControllerTest {
             thrown = true;
         }
         
+        //Assert
         assertTrue(thrown);
         
     }
@@ -85,17 +93,23 @@ public class TripControllerTest {
      * Test of sortTripsByTime method, of class TripController.
      */
     @Test
-    public void testsortTripsByTime() throws Exception {
+    public void testSortTripsByTime_ValidInput() throws Exception {
+        //Arrange
         TripController instance = new TripController();
         Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        
+        //Act
         Trip[] sortedTrips = instance.sortTripsByTime(trips);
         
+        
+        //Assert
         Time currTime;
         Time prevTime = new Time(0, 0, 0);
         
         for(Trip t : sortedTrips){
             currTime = t.getStartTime();
             assertTrue(currTime.after(prevTime));
+            prevTime = currTime;
         }
     }
     
@@ -103,12 +117,15 @@ public class TripControllerTest {
      * Test of sortTripsByPrice method, of class TripController.
      */
     @Test
-    public void testsortTripsByPrice_ValidInput() throws Exception {
+    public void testSortTripsByPrice_ValidInput() throws Exception {
+        //Arrange
         TripController instance = new TripController();
         Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
         
+        //Act
         Trip[] sortedTrips = instance.sortTripsByName(trips);
         
+        //Assert
         int currPrice = 0;
         int prevPrice = 0;
         
@@ -123,9 +140,12 @@ public class TripControllerTest {
     
     @Test
     public void testsortTripsByPrice_InvalidInput() throws Exception {
+        //Arrange
         TripController instance = new TripController();
         Trip[] trips = new Trip[0];
         boolean thrown = false;
+        
+        //Act
         try{
             Trip[] sortedTrips = instance.sortTripsByName(trips);
         }
@@ -133,6 +153,7 @@ public class TripControllerTest {
             thrown = true;
         }
         
+        //Arrange
         assertTrue(thrown);
     }
 
@@ -141,13 +162,36 @@ public class TripControllerTest {
      */
     @Test
     public void testBookTrip() throws Exception {
+        //Arrange
         TripController instance = new TripController();
         
         TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
         Trip trip = new Trip(1, "Ferð", new Date(117, 05, 22), new Time(9, 0, 0), new Time(18, 0, 0), "", 1000, "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20);
         
-        Trip trip2 = instance.bookTrip("Jón Jónsson", 334234, "Jónsgeisli 5", "jon@jon.is", trip, 3, Boolean.TRUE, Boolean.TRUE);
+        //Act
+        Trip trip2 = instance.bookTrip("Jón Jónsson", 334234, "Jónsgeisli 5", "jon@jon.is", trip, 3, true, true);
         
+        //Assert
         assertTrue(trip2.getAvailablePlaces() == 17);
-    }    
+    }
+
+    @Test
+    public void testBookTrip_InvalidInput() throws Exception {
+        //Arrange
+        TripController instance = new TripController();
+        TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
+        Trip trip = new Trip(1, "Ferð", new Date(117, 05, 22), new Time(9, 0, 0), new Time(18, 0, 0), "", 1000, "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20);
+        boolean thrown = false;
+        
+        //Act
+        try{
+            Trip trip2 = instance.bookTrip("", 0, "", "", trip, 0, null, null);
+        }
+        catch (IllegalArgumentException ex){
+            thrown = true;
+        }
+        
+        //Assert
+        assertTrue(thrown);
+    }
 }
