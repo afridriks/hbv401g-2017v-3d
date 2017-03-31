@@ -8,13 +8,17 @@ package view;
 
 //import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controller.TripController;
+import java.awt.BorderLayout;
 import model.Trip;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 
@@ -41,6 +45,7 @@ public class SearchFrame extends javax.swing.JFrame {
      * 
      */
     private void search() throws SQLException, ClassNotFoundException {
+        SidePanel.setVisible(false);
         
         //         Mock objects.         //
         ///////////////////////////////////
@@ -89,15 +94,17 @@ public class SearchFrame extends javax.swing.JFrame {
                0
        );
        
-       // Execute search
+       // Execute search and display
         Trip[] results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
+        List<Trip> res = Arrays.asList(results);
+        panel = new ResultsPanel(res);
+        JScrollPane sPane = panel.Show();
+        this.add(sPane);
+        sPane.setSize(SidePanel.getSize());
+        sPane.setLocation(SidePanel.getLocation());
+        this.validate();
+        this.repaint();
         
- 
-        
-        
-        // Iterate through results and print the name of each Trip
-        for(Trip t : results) { 
-            System.out.println("Leitarniðurstaða: " + t.getName()); }
     }
 
     /**
@@ -139,6 +146,7 @@ public class SearchFrame extends javax.swing.JFrame {
         jSlider2 = new javax.swing.JSlider(0, 50000, 25000);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        SidePanel = new javax.swing.JScrollPane();
         myndJLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -335,6 +343,7 @@ public class SearchFrame extends javax.swing.JFrame {
         );
 
         myndJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/aurora.jpg"))); // NOI18N
+        SidePanel.setViewportView(myndJLabel);
 
         fileMenu.setText("File");
 
@@ -364,19 +373,17 @@ public class SearchFrame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(UpperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(myndJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UpperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(myndJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SidePanel)
+                    .addComponent(UpperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
@@ -393,6 +400,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         try {
             search();
+            
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -447,6 +455,7 @@ public class SearchFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane SidePanel;
     private javax.swing.JPanel UpperPanel;
     private javax.swing.JMenu aboutMenu;
     private javax.swing.JRadioButton accessibleButton;

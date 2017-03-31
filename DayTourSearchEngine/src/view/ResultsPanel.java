@@ -5,14 +5,13 @@
  */
 package view;
 
+import java.util.List;
 import model.Trip;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import model.TripTableModel;
 
 /**
  *
@@ -21,14 +20,14 @@ import javax.swing.JLabel;
 public class ResultsPanel extends javax.swing.JPanel {
 
     
-    private Trip[] trips;
+    private final List<Trip> trips;
     
     /**
      * Creates new form ResultsWindow
+     * @param results
      */
-    public ResultsPanel() {
-      
-        
+    public ResultsPanel(List<Trip> results) {
+        trips = results;
     }
     
     
@@ -40,7 +39,12 @@ public class ResultsPanel extends javax.swing.JPanel {
         
     }
     
-    
+    public JScrollPane Show(){
+        TableModel model = new TripTableModel(trips);
+        JTable table = new JTable(model);
+        JScrollPane panel = new JScrollPane(table);
+        return panel;
+    }
     
 
     /**
@@ -52,30 +56,19 @@ public class ResultsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1)
-                .addContainerGap(206, Short.MAX_VALUE))
+            .addGap(0, 407, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jLabel1)
-                .addContainerGap(168, Short.MAX_VALUE))
+            .addGap(0, 305, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
