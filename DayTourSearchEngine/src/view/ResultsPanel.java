@@ -23,6 +23,7 @@ public class ResultsPanel extends javax.swing.JPanel {
 
     
     private final List<Trip> trips;
+    private JTable table;
     
     /**
      * Creates new form ResultsWindow
@@ -32,18 +33,9 @@ public class ResultsPanel extends javax.swing.JPanel {
         trips = results;
     }
     
-    
-    private void showDetails(int tripId) {
-        
-    }
-    
-    private void searchAgain() {
-        
-    }
-    
     public JScrollPane Show(){
         TableModel model = new TripTableModel(trips);
-        JTable table = new JTable(model);
+        table = new JTable(model);
         table.removeColumn(table.getColumnModel().getColumn(14));
         table.removeColumn(table.getColumnModel().getColumn(12)); 
         table.removeColumn(table.getColumnModel().getColumn(11)); 
@@ -54,6 +46,11 @@ public class ResultsPanel extends javax.swing.JPanel {
         table.removeColumn(table.getColumnModel().getColumn(0)); 
         JScrollPane panel = new JScrollPane(table);
         return panel;
+    }
+    
+    public Trip getSelectedRow(){
+       int index = table.getSelectedRow();
+       return trips.get(index);
     }
     
 

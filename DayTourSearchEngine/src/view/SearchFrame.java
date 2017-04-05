@@ -18,8 +18,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -48,7 +46,7 @@ public class SearchFrame extends javax.swing.JFrame {
      */
     private void search() throws SQLException, ClassNotFoundException {
         sidePanel.setVisible(false);
-        bookButton.setEnabled(true);
+        infoButton.setEnabled(true);
         
         //         Mock objects.         //
         ///////////////////////////////////
@@ -61,7 +59,7 @@ public class SearchFrame extends javax.swing.JFrame {
         //boolean accessible = false;
         //int minPrice = 10000;
         //int maxPrice = 20000;
-        int type = 2; // "Hestaferð"
+        int type = 1; // "Hestaferð"
         int location = 1;  // "Selfoss"   
         
         // Extract date on sql-format from Calendar.
@@ -150,7 +148,7 @@ public class SearchFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        bookButton = new javax.swing.JButton();
+        infoButton = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         myndJLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -164,7 +162,7 @@ public class SearchFrame extends javax.swing.JFrame {
 
         UpperPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        nameSearchBox.setText("Enter name...");
+        nameSearchBox.setToolTipText("Enter name...");
         nameSearchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameSearchBoxActionPerformed(evt);
@@ -211,7 +209,7 @@ public class SearchFrame extends javax.swing.JFrame {
         endTimeSpinner.setEditor(dee);
         // Code adding the component to the parent container - not shown here
 
-        keyWordSearchBox.setText("Enter keyword...");
+        keyWordSearchBox.setToolTipText("Enter keyword...");
         keyWordSearchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 keyWordSearchBoxActionPerformed(evt);
@@ -350,11 +348,11 @@ public class SearchFrame extends javax.swing.JFrame {
         jPanel1.setMaximumSize(new java.awt.Dimension(67, 82));
         jPanel1.setMinimumSize(new java.awt.Dimension(67, 82));
 
-        bookButton.setText("Book");
-        bookButton.setEnabled(false);
-        bookButton.addActionListener(new java.awt.event.ActionListener() {
+        infoButton.setText("More Information");
+        infoButton.setEnabled(false);
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookButtonActionPerformed(evt);
+                infoButtonActionPerformed(evt);
             }
         });
 
@@ -362,21 +360,17 @@ public class SearchFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 738, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(bookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         myndJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/aurora.jpg"))); // NOI18N
@@ -475,9 +469,11 @@ public class SearchFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_keyWordSearchBoxActionPerformed
 
-    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bookButtonActionPerformed
+        Trip selectedRow = panel.getSelectedRow();
+        System.out.println(selectedRow.getName());
+    }//GEN-LAST:event_infoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -525,7 +521,6 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton accessibleButton;
     private javax.swing.JComboBox<String> areaCombo;
     private javax.swing.JLabel areaLabel;
-    private javax.swing.JButton bookButton;
     private datechooser.beans.DateChooserPanel dateChooser;
     private javax.swing.JMenu editMenu;
     private javax.swing.JLabel endTimeLabel;
@@ -533,6 +528,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JRadioButton familyFriendlyButton;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JButton infoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -15,7 +15,7 @@ import java.sql.Time;
  *
  * @author Sigurlaug
  */
-public class Trip {
+public class Trip implements Comparable<Trip> {
     
     private final int id;
     private final String name;
@@ -114,7 +114,9 @@ public class Trip {
     public void setAvailablePlaces(int availablePlaces) {
         this.availablePlaces = availablePlaces;
     }
-    
-    
-    
+
+    @Override
+    public int compareTo(Trip o) {
+        return this.getName().compareTo(o.getName());
+    }        
 }

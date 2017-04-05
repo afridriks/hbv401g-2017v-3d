@@ -44,29 +44,44 @@ public final class DBTripManager {
                 tc.add(new TourCompany(myRs.getInt("id"),myRs.getString("name"),myRs.getInt("phone"),myRs.getString("address"),myRs.getString("email")));
               	//System.out.println(myRs.getInt("id")+myRs.getString("name")+myRs.getInt("phone")+myRs.getString("address")+myRs.getString("email"));
             }            
-  
-            myStmt = myConn.prepareStatement("SELECT * FROM Trip "
-                    + (tripName.length() == 0 ? "" : "WHERE name LIKE ? ")
-                    + (description.length() == 0 ? "": "AND description LIKE ? ")
-                    + "AND date = ? "
-                    + "AND startTime >= ? "
-                    + "AND startTime <= ? "
-                    + (familyFriendly ? "AND familyFriendly = 1 " : "")
-                    + (accessible ? "AND accessible = 1 " : "")
-                    + "AND price >= ? "
-                    + "AND price <= ? "
-                    + (type==null ? "" : "AND typeId = ? ")
-                    + (location==null ? "": "AND locationId = ? ")
-                    + ";");
-            myStmt.setString(1,"%"+tripName+"%");
-            myStmt.setString(2,"%"+description+"%");
-            myStmt.setString(3,date.toString());
-            myStmt.setString(4,startTime.toString());
-            myStmt.setString(5,endTime.toString());
-            myStmt.setString(6,Integer.toString(minPrice));
-            myStmt.setString(7,Integer.toString(maxPrice));
-            if(type!=null) myStmt.setString(8,Integer.toString(type));
-            if(location!=null) myStmt.setString(9,Integer.toString(location));
+            
+            String queryString = "Select * FROM Trip ";
+            queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
+            queryString += description.length() == 0 ? "": "description LIKE ? AND ";
+            queryString += "date = ? AND ";
+            queryString += "startTime >= ? AND ";
+            queryString += "startTime <= ? AND ";
+            queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
+            queryString += accessible ? "accessible = 1 AND " : "";
+            queryString += "price >= ? AND ";
+            queryString += "price <= ? AND ";
+            queryString += "typeId = ? AND ";
+            queryString += "locationId = ? ;";
+            
+            myStmt = myConn.prepareStatement(queryString);
+            int i = 1;
+            if(tripName.length() != 0){
+                myStmt.setString(i,"%"+tripName+"%");
+                i++;
+            }
+            if (description.length() != 0){
+                myStmt.setString(i,"%"+description+"%");
+                i++;
+            }
+            myStmt.setString(i,date.toString());
+            i++;
+            myStmt.setString(i,startTime.toString());
+            i++;
+            myStmt.setString(i,endTime.toString());
+            i++;
+            myStmt.setString(i,Integer.toString(minPrice));
+            i++;
+            myStmt.setString(i,Integer.toString(maxPrice));
+            i++;
+            myStmt.setString(i,Integer.toString(type));
+            i++;
+            myStmt.setString(i,Integer.toString(location));
+            
             myStmt.setQueryTimeout(30);
             
             myRs = myStmt.executeQuery();

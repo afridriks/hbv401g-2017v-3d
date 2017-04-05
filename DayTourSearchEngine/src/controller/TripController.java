@@ -8,6 +8,7 @@ package controller;
 import java.sql.Date;   // líka til java.util.Date, en þessi hentar líklega betur fyrir okkur útaf SQLite
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.Arrays;
 
 import model.*;
 
@@ -18,18 +19,15 @@ import model.*;
 public class TripController {
     
     private Trip[] results;
-    private final MockDBTripManager tripManager;
-    private final MockDBBookingManager bookingManager;
+    private final DBTripManager tripManager;
+    private final DBBookingManager bookingManager;
     
     public TripController() throws SQLException {
-        tripManager = new MockDBTripManager("daytrips.db");
-        bookingManager = new MockDBBookingManager("daytrips.db");
+        tripManager = new DBTripManager("daytrips.db");
+        bookingManager = new DBBookingManager("daytrips.db");
     }
     
     public Trip[] searchTrips(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
-        //if(tripName == null || date == null || startTime == null || endTime == null || description == null || familyFriendly == null || accessible == null || minPrice > maxPrice || minPrice < 0 || maxPrice < 0) {
-          //  throw new IllegalArgumentException("Invalid argument");
-        //}
         results = tripManager.search(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         return results;
     }
@@ -48,6 +46,7 @@ public class TripController {
     
     public Trip[] sortTripsByName(Trip[] trips) {
         if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
+        Arrays.sort(trips);
         return trips;
     }
     
