@@ -5,9 +5,9 @@ DROP TABLE if exists Trip;
 DROP TABLE if exists Booking;
 DROP TABLE if exists TourCompany;
 DROP TABLE if exists Customer;
-DROP TABLE if exists Area;
 DROP TABLE if exists Location;
 DROP TABLE if exists Type;
+DROP TABLE if exists Area;
 
 CREATE TABLE TourCompany (
   id INTEGER PRIMARY KEY,
@@ -58,7 +58,7 @@ CREATE TABLE Trip (
   id INTEGER PRIMARY KEY,
   name varchar(50),
   date DATE,
-  startTime TIME, 
+  startTime TIME,
   endTime TIME,
   description varchar(200),
   familyFriendly int,
@@ -72,7 +72,11 @@ CREATE TABLE Trip (
 );
 
 INSERT INTO "Trip" VALUES(1,'Hestaferðin','2017-06-22','10:00','13:00','Skemmtileg hestaferð',0,0,15000,2,1,10,10,1);
-INSERT INTO "Trip" VALUES(2,'Hestaferðin','2017-06-22','10:00','13:00','Skemmtileg hestaferð',0,0,15000,2,1,10,10,1);
+INSERT INTO "Trip" VALUES(2,'Bjórferðin','2017-06-22','11:00','14:00','Skemmtileg bjórferð',0,0,25000,5,1,12,12,2);
+INSERT INTO "Trip" VALUES(3,'Eldfjallaferðin','2017-06-22','12:00','15:00','Skemmtileg eldfjallaferð',0,0,29990,3,1,5,5,3);
+INSERT INTO "Trip" VALUES(4,'Jöklaferðin','2017-06-22','13:00','16:00','Skemmtileg jöklferð',0,0,19990,4,1,10,10,1);
+INSERT INTO "Trip" VALUES(5,'Matarferðin','2017-06-22','14:00','17:00','Skemmtileg matarferð',0,0,10000,6,1,15,15,2);
+INSERT INTO "Trip" VALUES(6,'Gullni Hringurinn','2017-06-22','15:00','18:00','Skemmtileg fjölskylduferð',1,0,35000,1,1,20,20,3);
 
 CREATE TABLE Customer (
   id INTEGER PRIMARY KEY,
