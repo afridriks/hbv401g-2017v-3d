@@ -127,8 +127,8 @@ public final class DBTripManager {
             
             myStmt.setQueryTimeout(30);
             
-            myStmt.executeQuery();
-
+            myStmt.executeUpdate();
+            
         } catch (SQLException ex) {
             Logger.getLogger(DBTripManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

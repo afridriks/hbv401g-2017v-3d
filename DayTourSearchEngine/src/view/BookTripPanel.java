@@ -19,7 +19,7 @@ import model.TripTableModel;
  */
 public class BookTripPanel extends javax.swing.JPanel {
     
-        private final List<Trip> trips;
+    private final List<Trip> trips;
     private JTable table;
     
     /**
@@ -48,6 +48,11 @@ public class BookTripPanel extends javax.swing.JPanel {
         table.removeColumn(table.getColumnModel().getColumn(0)); 
         JScrollPane panel = new JScrollPane(table);
         return panel;
+    }
+        
+    public Trip getSelectedRow(){
+       int index = table.getSelectedRow();
+       return trips.get(index);
     }
     
 

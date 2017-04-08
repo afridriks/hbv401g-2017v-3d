@@ -27,6 +27,14 @@ public class DBBookingManager {
     
     public void bookTrip(Booking booking) throws ClassNotFoundException {
         try {
+            
+            
+            System.out.println(booking.getCustomer().getId());
+            System.out.println(booking.getTrip().getId());
+            System.out.println(booking.getNumTravelers());
+            System.out.println(booking.isHotelPickup());
+            System.out.println(booking.isActive());
+                    
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             myStmt = myConn.prepareStatement("INSERT INTO Booking(customerId, tripId, numTravelers, hotelPickup, active) VALUES(?,?,?,?,?);");
@@ -38,7 +46,7 @@ public class DBBookingManager {
 
             myStmt.setQueryTimeout(30);
             
-            myStmt.executeQuery();
+            myStmt.executeUpdate();
             
         } catch (SQLException ex) {
             Logger.getLogger(DBBookingManager.class.getName()).log(Level.SEVERE, null, ex);
