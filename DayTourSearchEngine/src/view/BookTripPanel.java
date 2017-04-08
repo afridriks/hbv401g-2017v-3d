@@ -6,32 +6,49 @@
 package view;
 
 import model.Trip;
-import controller.TripController;
-import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+import model.TripTableModel;
 
 /**
  *
  * @author andri
  */
 public class BookTripPanel extends javax.swing.JPanel {
-
-    private final Trip trip;
-    private final TripController controller;
+;
+    
+        private final List<Trip> trips;
+    private JTable table;
     
     /**
      * Creates new form BookTripPanel
      * @param trip
      */
-    public BookTripPanel(Trip newTrip) throws SQLException {
-        trip = newTrip;
-        controller = new TripController();
-        initComponents();
+    public BookTripPanel(List<Trip> results) {
+        trips = results;
+        
     }
     
     private void bookTrip() {
         //controller.bookTrip();
     }
     
+        public JScrollPane Show(){
+        TableModel model = new TripTableModel(trips);
+        table = new JTable(model);
+        table.removeColumn(table.getColumnModel().getColumn(14));
+        table.removeColumn(table.getColumnModel().getColumn(12)); 
+        table.removeColumn(table.getColumnModel().getColumn(11)); 
+        table.removeColumn(table.getColumnModel().getColumn(10)); 
+        table.removeColumn(table.getColumnModel().getColumn(7)); 
+        table.removeColumn(table.getColumnModel().getColumn(6)); 
+        table.removeColumn(table.getColumnModel().getColumn(5)); 
+        table.removeColumn(table.getColumnModel().getColumn(0)); 
+        JScrollPane panel = new JScrollPane(table);
+        return panel;
+    }
     
 
     /**
@@ -43,19 +60,30 @@ public class BookTripPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
+
+        jRadioButton1.setText("jRadioButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jRadioButton1)
+                .addContainerGap(256, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jRadioButton1)
+                .addContainerGap(209, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }

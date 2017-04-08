@@ -9,6 +9,8 @@ package view;
 //import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controller.TripController;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import model.Trip;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -18,6 +20,10 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -30,6 +36,7 @@ import javax.swing.SpinnerDateModel;
 public class SearchFrame extends javax.swing.JFrame {
 
     private ResultsPanel panel;
+    private BookTripPanel bookingPanel;
     private final TripController controller;
     
     /**
@@ -39,6 +46,7 @@ public class SearchFrame extends javax.swing.JFrame {
     public SearchFrame() throws SQLException {
         controller = new TripController();
         initComponents();
+        
     }
     
     /**
@@ -50,16 +58,18 @@ public class SearchFrame extends javax.swing.JFrame {
         
         //         Mock objects.         //
         ///////////////////////////////////
-        //String tripName = "Hestaferðin";
-        //Date date = new Date(117, 05, 22);
-        //Time startTime = new Time(9, 0, 0);
-        //Time endTime = new Time(18, 0, 0);
-        //String description = "Skemmtileg hestaferð";
-        //boolean familyFriendly = false;
-        //boolean accessible = false;
-        //int minPrice = 10000;
-        //int maxPrice = 20000;
-        
+        String tripName = "Hestaferðin";
+        Date date = new Date(117, 05, 22);
+        Time startTime = new Time(9, 0, 0);
+        Time endTime = new Time(18, 0, 0);
+        String description = "Skemmtileg hestaferð";
+        boolean familyFriendly = false;
+        boolean accessible = false;
+        int minPrice = 10000;
+        int maxPrice = 20000;
+        int type = 2;
+        int location = 1;
+        /*
         // Extract date on sql-format from Calendar.
         Calendar d = dateChooser.getSelectedDate();
         java.sql.Date date = new java.sql.Date(d.getTimeInMillis() );
@@ -122,6 +132,18 @@ public class SearchFrame extends javax.swing.JFrame {
         this.repaint();
         
     }
+    
+    private void showInfo(Trip selectedRow) {
+        jPanel3.setVisible(false);
+        List<Trip> res = Arrays.asList(selectedRow);
+        bookingPanel = new BookTripPanel(res);
+        JScrollPane sPane = bookingPanel.Show();
+        this.add(sPane);
+        sPane.setSize(jPanel3.getSize());
+        sPane.setLocation(jPanel3.getLocation());
+        this.validate();
+        this.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,6 +188,7 @@ public class SearchFrame extends javax.swing.JFrame {
         infoButton = new javax.swing.JButton();
         sidePanel = new javax.swing.JPanel();
         myndJLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -416,6 +439,19 @@ public class SearchFrame extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1428, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+
         fileMenu.setText("File");
 
         exitMenuItem.setText("Exit");
@@ -448,6 +484,10 @@ public class SearchFrame extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,7 +499,9 @@ public class SearchFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(UpperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -491,9 +533,11 @@ public class SearchFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_keyWordSearchBoxActionPerformed
 
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
-        // TODO add your handling code here:
         Trip selectedRow = panel.getSelectedRow();
         System.out.println(selectedRow.getName());
+
+        showInfo(selectedRow);
+        
     }//GEN-LAST:event_infoButtonActionPerformed
 
     private void typeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboActionPerformed
@@ -558,6 +602,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
     private javax.swing.JTextField keyWordSearchBox;
