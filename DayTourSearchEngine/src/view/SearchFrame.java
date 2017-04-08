@@ -59,8 +59,6 @@ public class SearchFrame extends javax.swing.JFrame {
         //boolean accessible = false;
         //int minPrice = 10000;
         //int maxPrice = 20000;
-        int type = 1; // "Hestaferð"
-        int location = 1;  // "Selfoss"   
         
         // Extract date on sql-format from Calendar.
         Calendar d = dateChooser.getSelectedDate();
@@ -94,8 +92,25 @@ public class SearchFrame extends javax.swing.JFrame {
                Integer.parseInt(endTimeSpinner.getValue().toString().subSequence(14, 16).toString()),
                0
        );
+
+       // Get Type and Area.
+       int type = typeCombo.getSelectedIndex()+1; // "Hestaferð"
+       int location = areaCombo.getSelectedIndex()+1;  // "Selfoss"   
+
               
        // Execute search and display
+       /*System.out.println(tripName);
+       System.out.println(date);
+       System.out.println(startTime);
+       System.out.println(endTime);
+       System.out.println(description);
+       System.out.println(familyFriendly);
+       System.out.println(accessible);
+       System.out.println(minPrice);
+       System.out.println(maxPrice);
+       System.out.println(type);
+       System.out.println(location);*/
+       
         Trip[] results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         List<Trip> res = Arrays.asList(results);
         panel = new ResultsPanel(res);
@@ -119,8 +134,8 @@ public class SearchFrame extends javax.swing.JFrame {
 
         UpperPanel = new javax.swing.JPanel();
         nameSearchBox = new javax.swing.JTextField();
-        typeCombo = new javax.swing.JComboBox<>();
         areaCombo = new javax.swing.JComboBox<>();
+        typeCombo = new javax.swing.JComboBox<>();
         searchButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         familyFriendlyButton = new javax.swing.JRadioButton();
@@ -169,9 +184,15 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
 
-        typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capital Area", "Eastern Region", "Southern Region", "Northern Region", "Western Region", "Highlands of Iceland", " " }));
+        areaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capital Area", "Eastern Region", "Southern Region", "Northern Region", "Western Region", "Highlands of Iceland", " " }));
 
-        areaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Golden Circle", "Horse Trips", "Volcano", "Glaciers", "Beer Trips", "Food Trips" }));
+        typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Golden Circle", "Horse Trips", "Volcano", "Glaciers", "Beer Trips", "Food Trips" }));
+        typeCombo.setActionCommand("");
+        typeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeComboActionPerformed(evt);
+            }
+        });
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -253,8 +274,8 @@ public class SearchFrame extends javax.swing.JFrame {
                                 .addGroup(UpperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(accessibleButton)
                                     .addComponent(familyFriendlyButton)
-                                    .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(UpperPanelLayout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addComponent(typeLabel))
@@ -311,11 +332,11 @@ public class SearchFrame extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(areaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(typeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(areaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(typeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(UpperPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -474,6 +495,10 @@ public class SearchFrame extends javax.swing.JFrame {
         Trip selectedRow = panel.getSelectedRow();
         System.out.println(selectedRow.getName());
     }//GEN-LAST:event_infoButtonActionPerformed
+
+    private void typeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboActionPerformed
+       
+    }//GEN-LAST:event_typeComboActionPerformed
 
     /**
      * @param args the command line arguments
