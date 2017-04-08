@@ -94,7 +94,7 @@ public class SearchFrame extends javax.swing.JFrame {
                Integer.parseInt(endTimeSpinner.getValue().toString().subSequence(14, 16).toString()),
                0
        );
-       
+              
        // Execute search and display
         Trip[] results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         List<Trip> res = Arrays.asList(results);

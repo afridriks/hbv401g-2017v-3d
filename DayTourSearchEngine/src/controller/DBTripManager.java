@@ -45,7 +45,7 @@ public final class DBTripManager {
               	//System.out.println(myRs.getInt("id")+myRs.getString("name")+myRs.getInt("phone")+myRs.getString("address")+myRs.getString("email"));
             }            
             
-            String queryString = "Select * FROM Trip ";
+            String queryString = "Select * FROM Trip WHERE ";
             queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
             queryString += description.length() == 0 ? "": "description LIKE ? AND ";
             queryString += "date = ? AND ";
