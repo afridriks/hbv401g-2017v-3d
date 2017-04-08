@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class BookTableModel extends AbstractTableModel{
     
     private List<Trip> trips;
-    private String[] columns;
+    private final String[] columns;
     
     public BookTableModel(List<Trip> tripsArray){
         super();
@@ -53,7 +53,7 @@ public class BookTableModel extends AbstractTableModel{
             case 11 : return trip.getLocation();
             case 12 : return trip.getMaxTravelers();
             case 13 : return trip.getAvailablePlaces();
-            case 14 : return trip.getTourCompany();
+            case 14 : return trip.getTourCompany().getName();
             default : return null;
         }
     }

@@ -146,7 +146,7 @@ public final class DBTripManager {
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
-        Trip[] trips = man.search("hest",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,10000,20000,2,1);
+        Trip[] trips = man.search("bjór",Date.valueOf("2017-06-22"),Time.valueOf("10:00:00"),Time.valueOf("13:00:00"),"mm",false,false,10000,30000,5,1);
         
         for(Trip t: trips) {
             System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName());

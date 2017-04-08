@@ -14,8 +14,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TripTableModel extends AbstractTableModel{
     
-    private List<Trip> trips;
-    private String[] columns;
+    private final List<Trip> trips;
+    private final String[] columns;
     
     public TripTableModel(List<Trip> tripsArray){
         super();

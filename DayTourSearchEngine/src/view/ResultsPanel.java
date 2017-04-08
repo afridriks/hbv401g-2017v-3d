@@ -6,8 +6,6 @@
 package view;
 
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JPanel;
 import model.Trip;
 
 import javax.swing.JScrollPane;

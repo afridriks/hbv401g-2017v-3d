@@ -11,7 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import model.BookTableModel;
-import model.TripTableModel;
 
 /**
  *
@@ -31,23 +30,19 @@ public class BookTripPanel extends javax.swing.JPanel {
         
     }
     
-    private void bookTrip() {
-        //controller.bookTrip();
-    }
-    
-        public JScrollPane Show(){
-        TableModel model = new BookTableModel(trips);
-        table = new JTable(model);
-        table.removeColumn(table.getColumnModel().getColumn(14));
-        table.removeColumn(table.getColumnModel().getColumn(12)); 
-        table.removeColumn(table.getColumnModel().getColumn(11)); 
-        table.removeColumn(table.getColumnModel().getColumn(10)); 
-        table.removeColumn(table.getColumnModel().getColumn(7)); 
-        table.removeColumn(table.getColumnModel().getColumn(6)); 
-        table.removeColumn(table.getColumnModel().getColumn(5)); 
-        table.removeColumn(table.getColumnModel().getColumn(0)); 
-        JScrollPane panel = new JScrollPane(table);
-        return panel;
+    public JScrollPane Show(){
+       TableModel model = new BookTableModel(trips);
+       table = new JTable(model);
+       table.removeColumn(table.getColumnModel().getColumn(0)); 
+       table.removeColumn(table.getColumnModel().getColumn(1)); 
+       table.removeColumn(table.getColumnModel().getColumn(4));
+       table.removeColumn(table.getColumnModel().getColumn(4));
+       table.removeColumn(table.getColumnModel().getColumn(5));
+       table.removeColumn(table.getColumnModel().getColumn(5));
+       table.removeColumn(table.getColumnModel().getColumn(5));
+       table.removeColumn(table.getColumnModel().getColumn(5));
+       JScrollPane panel = new JScrollPane(table);
+       return panel;
     }
         
     public Trip getSelectedRow(){
