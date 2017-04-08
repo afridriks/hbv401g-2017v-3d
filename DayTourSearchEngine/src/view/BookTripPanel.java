@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
+import model.BookTableModel;
 import model.TripTableModel;
 
 /**
@@ -17,14 +18,13 @@ import model.TripTableModel;
  * @author andri
  */
 public class BookTripPanel extends javax.swing.JPanel {
-;
     
         private final List<Trip> trips;
     private JTable table;
     
     /**
      * Creates new form BookTripPanel
-     * @param trip
+     * @param results
      */
     public BookTripPanel(List<Trip> results) {
         trips = results;
@@ -36,7 +36,7 @@ public class BookTripPanel extends javax.swing.JPanel {
     }
     
         public JScrollPane Show(){
-        TableModel model = new TripTableModel(trips);
+        TableModel model = new BookTableModel(trips);
         table = new JTable(model);
         table.removeColumn(table.getColumnModel().getColumn(14));
         table.removeColumn(table.getColumnModel().getColumn(12)); 
