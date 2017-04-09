@@ -652,7 +652,8 @@ public class SearchFrame extends javax.swing.JFrame {
             Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+        this.validate();
+        this.repaint();
         
     }//GEN-LAST:event_bookButtonActionPerformed
 
