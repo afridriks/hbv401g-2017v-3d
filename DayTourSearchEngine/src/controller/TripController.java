@@ -44,20 +44,50 @@ public class TripController {
         return trip;
     }
     
-    public Trip[] sortTripsByName(Trip[] trips) {
+    // Notkun: Trip[] sorted = sortTripsByName(trips);
+    // Fyrir:  trips er listi af Trip hlutum.
+    // Eftir:  Búið er að raða trips eftir nafni í vaxandi röð.
+    private Trip[] sortTripsByName(Trip[] trips) {
         if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
         Arrays.sort(trips);
         return trips;
     }
     
-    public Trip[] sortTripsByTime(Trip[] trips) {
-        if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
+    // Notkun: Trip[] sorted = sortTripsByTime(trips);
+    // Fyrir:  trips er listi af Trip hlutum.
+    // Eftir:  Búið er að raða trips eftir upphafstíma í vaxandi röð.
+    private Trip[] sortTripsByTime(Trip[] trips) {
+        int inner;
+        int outer;
+        int n = trips.length;
+        for(outer = 1; outer<n; outer++) {
+            Trip temp = trips[outer];
+            inner = outer;
+            while( inner > 0 && trips[inner-1].getStartTime().after(temp.getStartTime()) ) {
+                trips[inner] = trips[inner-1];
+                inner--;
+            }
+           trips[inner] = temp;
+        }
         return trips;
     }
     
-    public Trip[] sortTripsByPrice(Trip[] trips) {
-        if(trips.length <= 0) throw new IllegalArgumentException("Invalid argument");
+    // Notkun: Trip[] sorted = sortTripsByPrice(trips);
+    // Fyrir:  trips er listi af Trip hlutum.
+    // Eftir:  Búið er að raða trips eftir verði í vaxandi röð.
+    private Trip[] sortTripsByPrice(Trip[] trips) {
+        int inner;
+        int outer;
+        int n = trips.length;
+        for(outer = 1; outer<n; outer++) {
+            Trip temp = trips[outer];
+            inner = outer;
+            while( inner > 0 && trips[inner-1].getPrice() >= temp.getPrice()) {
+                trips[inner] = trips[inner-1];
+                inner--;
+            }
+           trips[inner] = temp;
+        }
         return trips;
     }
-    
 }

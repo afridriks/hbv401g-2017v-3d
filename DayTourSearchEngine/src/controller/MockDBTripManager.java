@@ -13,12 +13,14 @@ import java.sql.SQLException;
 import java.sql.Time;
 import model.TourCompany;
 import model.Trip;
+import controller.TripController;
 
 /**
  *
  * @author andri
  */
 public class MockDBTripManager {
+
     private Connection myConn;
     private PreparedStatement myStmt;
     private ResultSet myRs;
@@ -39,6 +41,26 @@ public class MockDBTripManager {
     }
     
     public void updateAvailablePlaces(Trip t) throws ClassNotFoundException {
+    }
+    
+    // Til þess að prófa sort föll.
+    public static void main(String[] args) {
+        Trip[] trips = new Trip[10];
+        TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
+        for(int i = 0; i < 10; i++){
+            Trip trip = new Trip(i, "Ferð"+(int)(Math.random()*10), new Date(117, 05, 22+i), new Time((int) (24*Math.random()), 0, 0), new Time((int) (24*Math.random()), 0, 0), "", (int) (1000+(100*Math.random())), "Gamanferð", "Heima", "Rvk", 20, false, false, tc, 20-i);
+            trips[i] = trip;
+        }
+         for(Trip t: trips) {
+            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getStartTime()+ ", " + t.getPrice());
+        }
+         
+        Trip[] sortedByPrice;
+        //sortedByPrice = TripController.sortTripsByName(trips);
+        
+        //  for(Trip t: sortedByPrice) {
+        //    System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getStartTime()+ ", " + t.getPrice());
+        //}
     }
     
 }
