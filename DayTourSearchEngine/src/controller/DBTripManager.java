@@ -46,16 +46,16 @@ public final class DBTripManager {
             }            
             
             String queryString = "Select * FROM Trip WHERE ";
-            queryString += tripName.length() == 0 ? "" : "name LIKE ? OR ";
+            queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
             queryString += description.length() == 0 ? "": "description LIKE ? AND ";
-            queryString += "date = ? OR ";
+            queryString += "date = ? AND ";
             queryString += "startTime >= ? OR ";
             queryString += "startTime <= ? OR ";
             queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
             queryString += accessible ? "accessible = 1 AND " : "";
             queryString += "price >= ? AND ";
-            queryString += "price <= ? OR ";
-            queryString += "typeId = ? OR ";
+            queryString += "price <= ? AND ";
+            queryString += "typeId = ? AND ";
             queryString += "locationId = ? ;";
             
             myStmt = myConn.prepareStatement(queryString);
