@@ -124,6 +124,8 @@ public class SearchFrame extends javax.swing.JFrame {
         results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         Trip[] sorted = controller.sortTripsByName(results);
         showResults(sorted);
+        this.validate();
+        this.repaint();
         
     }
     
@@ -149,7 +151,7 @@ public class SearchFrame extends javax.swing.JFrame {
         this.add(sPane);
         sPane.setSize(bookingsPanel.getSize());
         sPane.setLocation(bookingsPanel.getLocation());
-        this.validate();
+        this.revalidate();
         this.repaint();
     }
 
@@ -227,21 +229,11 @@ public class SearchFrame extends javax.swing.JFrame {
         searchPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         nameSearchBox.setToolTipText("Enter name...");
-        nameSearchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameSearchBoxActionPerformed(evt);
-            }
-        });
 
         areaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capital Area", "Eastern Region", "Southern Region", "Northern Region", "Western Region", "Highlands of Iceland", " " }));
 
         typeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Golden Circle", "Horse Trips", "Volcano", "Glaciers", "Beer Trips", "Food Trips" }));
         typeCombo.setActionCommand("");
-        typeCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeComboActionPerformed(evt);
-            }
-        });
 
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,12 +252,6 @@ public class SearchFrame extends javax.swing.JFrame {
 
         accessibleButton.setText("Accessible");
 
-        dateChooser.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
-            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
-                dateChooserOnSelectionChange(evt);
-            }
-        });
-
         startTimeLabel.setText("Start time:");
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(startTimeSpinner,
@@ -280,11 +266,6 @@ public class SearchFrame extends javax.swing.JFrame {
         // Code adding the component to the parent container - not shown here
 
         keyWordSearchBox.setToolTipText("Enter keyword...");
-        keyWordSearchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keyWordSearchBoxActionPerformed(evt);
-            }
-        });
 
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMaximum(50);
@@ -660,10 +641,6 @@ public class SearchFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void dateChooserOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserOnSelectionChange
-
-    }//GEN-LAST:event_dateChooserOnSelectionChange
-
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         try {
             search();
@@ -673,16 +650,10 @@ public class SearchFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void nameSearchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSearchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameSearchBoxActionPerformed
-
-    private void keyWordSearchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyWordSearchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_keyWordSearchBoxActionPerformed
-
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         
+        // If the trip is inactive the .getAvailablePlaces() function always
+        // returns false.
         if(bookingPanel.getSelectedRow().getAvailablePlaces() > Integer.parseInt(nrTravelers.getValue().toString()))
             try {
                 controller.bookTrip(
@@ -706,13 +677,8 @@ public class SearchFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bookButtonActionPerformed
 
-    private void typeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboActionPerformed
-       
-    }//GEN-LAST:event_typeComboActionPerformed
-
     private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         Trip selectedRow = panel.getSelectedRow();
-        System.out.println(selectedRow.getName());
         showInfo(selectedRow);
     }//GEN-LAST:event_infoButtonActionPerformed
 
@@ -747,19 +713,9 @@ public class SearchFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SearchFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {

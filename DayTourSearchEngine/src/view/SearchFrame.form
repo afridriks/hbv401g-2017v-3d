@@ -253,9 +253,6 @@
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Enter name..."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameSearchBoxActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="areaCombo">
           <Properties>
@@ -289,9 +286,6 @@
             </Property>
             <Property name="actionCommand" type="java.lang.String" value=""/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="typeComboActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -332,9 +326,6 @@
           </Properties>
         </Component>
         <Component class="datechooser.beans.DateChooserPanel" name="dateChooser">
-          <Events>
-            <EventHandler event="onSelectionChange" listener="datechooser.events.SelectionChangedListener" parameters="datechooser.events.SelectionChangedEvent" handler="dateChooserOnSelectionChange"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="startTimeLabel">
           <Properties>
@@ -364,9 +355,6 @@
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Enter keyword..."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="keyWordSearchBoxActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JSlider" name="jSlider1">
           <Properties>
