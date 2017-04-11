@@ -119,7 +119,7 @@ public class SearchFrame extends javax.swing.JFrame {
        System.out.println(minPrice);
        System.out.println(maxPrice);
        System.out.println(type);
-       System.out.println(location);*/
+       System.out.println(location); */
        
         results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
         Trip[] sorted = controller.sortTripsByName(results);
