@@ -27,7 +27,7 @@ public final class DBTripManager {
         this.dbname = dbname;
     }
  
-    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String location) throws SQLException, ClassNotFoundException {
+    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String area) throws SQLException, ClassNotFoundException {
         ArrayList<Trip> trips;
         trips = new ArrayList<>();
         try {
@@ -56,7 +56,7 @@ public final class DBTripManager {
             queryString += "price >= ? AND ";
             queryString += "price <= ? AND ";
             queryString += "typeName = ? AND ";
-            queryString += "locationName = ? ;";
+            queryString += "area = ? ;";
             
             myStmt = myConn.prepareStatement(queryString);
             int i = 1;
@@ -80,7 +80,7 @@ public final class DBTripManager {
             i++;
             myStmt.setString(i,type);
             i++;
-            myStmt.setString(i,location);
+            myStmt.setString(i,area);
             
             myStmt.setQueryTimeout(30);
             
@@ -96,7 +96,7 @@ public final class DBTripManager {
                         break;
                     }
                 }
-                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("locationName"),myRs.getString("locationName"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
+                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("area"),myRs.getString("area"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
                 trips.add(newTrip);
                 // bara til að testa
               	//System.out.println(myRs.getString("name") + ", " + myRs.getInt("maxTravelers") + ", " + myRs.getString("date") + ", " + myRs.getString("startTime"));
