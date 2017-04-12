@@ -34,6 +34,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private final TripController controller;
     private Trip[] results;
     private JScrollPane sPane;
+    private JScrollPane bookSPane;
     
     /**
      * Creates new form SearchWindow
@@ -109,6 +110,7 @@ public class SearchFrame extends javax.swing.JFrame {
        int type = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
        int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
 
+
        /*       
        // Execute search and display
        System.out.println(tripName);
@@ -151,16 +153,24 @@ public class SearchFrame extends javax.swing.JFrame {
     }
     
     private void showInfo(Trip selectedRow) {
+        JComponent pane;
+        if(bookSPane != null){
+            pane = bookSPane;
+            this.remove(bookSPane);
+        }
+        else{
+            pane = bookingsPanel;
+        }
         bookButton.setVisible(true);
         bookButton.setEnabled(true);
         bookingsPanel.setVisible(false);
         bookingInfoPanel.setVisible(true);
         List<Trip> res = Arrays.asList(selectedRow);
         bookingPanel = new BookTripPanel(res);
-        JScrollPane sPane = bookingPanel.Show();
-        this.add(sPane);
-        sPane.setSize(bookingsPanel.getSize());
-        sPane.setLocation(bookingsPanel.getLocation());
+        bookSPane = bookingPanel.Show();
+        this.add(bookSPane);
+        bookSPane.setSize(pane.getSize());
+        bookSPane.setLocation(pane.getLocation());
         this.revalidate();
         this.repaint();
     }
