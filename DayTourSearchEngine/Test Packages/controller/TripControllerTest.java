@@ -49,7 +49,7 @@ public class TripControllerTest {
         
         //Arrange
         TripController instance = new TripController();
-        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, "", "");
         
         //Act        
         Trip[] sortedTrips = instance.sortTripsByName(trips);
@@ -94,7 +94,7 @@ public class TripControllerTest {
     public void testSortTripsByTime_ValidInput() throws Exception {
         //Arrange
         TripController instance = new TripController();
-        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, "", "");
         
         //Act
         Trip[] sortedTrips = instance.sortTripsByTime(trips);
@@ -138,7 +138,7 @@ public class TripControllerTest {
     public void testSortTripsByPrice_ValidInput() throws Exception {
         //Arrange
         TripController instance = new TripController();
-        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, 0, 0);
+        Trip[] trips = instance.searchTrips("", null, null, null, "", Boolean.FALSE, Boolean.FALSE, 0, 0, "", "");
         
         //Act
         Trip[] sortedTrips = instance.sortTripsByPrice(trips);
