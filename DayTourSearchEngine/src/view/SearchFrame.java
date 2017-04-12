@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -32,6 +33,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private BookTripPanel bookingPanel;
     private final TripController controller;
     private Trip[] results;
+    private JScrollPane sPane;
     
     /**
      * Creates new form SearchWindow
@@ -130,14 +132,22 @@ public class SearchFrame extends javax.swing.JFrame {
     }
     
     private void showResults(Trip[] results) {
+        JComponent pane;
+        if(sPane != null){
+            pane = sPane;
+            this.remove(sPane);
+        }
+        else{
+            pane = sidePanel;
+        }
         List<Trip> res = Arrays.asList(results);
         panel = new ResultsPanel(res);
-        JScrollPane sPane = panel.Show();
+        sPane = panel.Show();
         this.add(sPane);
-        sPane.setSize(sidePanel.getSize());
-        sPane.setLocation(sidePanel.getLocation());
+        sPane.setSize(pane.getSize());
+        sPane.setLocation(pane.getLocation());   
         this.validate();
-        this.repaint();
+        this.repaint();        
     }
     
     private void showInfo(Trip selectedRow) {
