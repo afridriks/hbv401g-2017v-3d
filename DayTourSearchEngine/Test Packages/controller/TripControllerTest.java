@@ -6,7 +6,9 @@
 package controller;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
+import model.Booking;
 import model.TourCompany;
 import model.Trip;
 import org.junit.After;
@@ -212,4 +214,13 @@ public class TripControllerTest {
         //Assert
         assertTrue(thrown);
     }
+    
+    @Test
+    public void testSearchBookings() throws SQLException, ClassNotFoundException {
+        TripController instance = new TripController();
+        
+        Booking[] bookings = instance.GetBookingsByName("Sigurlaug");
+        
+        assertTrue(bookings.length > 0);
+    }  
 }

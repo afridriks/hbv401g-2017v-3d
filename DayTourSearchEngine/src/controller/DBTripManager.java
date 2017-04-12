@@ -141,7 +141,53 @@ public final class DBTripManager {
             }
         }
     }
- 
+    
+    public Trip[] getAllTrips() throws SQLException, ClassNotFoundException{
+        ArrayList<Trip> trips;
+        trips = new ArrayList<>();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+            
+            
+            // ná í Tourcompanies og búa til objects
+            ArrayList<TourCompany> tc = new ArrayList<>();
+            myStmt = myConn.prepareStatement("SELECT * FROM TourCompany;");
+            myRs = myStmt.executeQuery();
+
+            while(myRs.next()) {
+                tc.add(new TourCompany(myRs.getInt("id"),myRs.getString("name"),myRs.getInt("phone"),myRs.getString("address"),myRs.getString("email")));
+            }  
+            
+            myStmt = myConn.prepareStatement("SELECT * FROM Trip;");
+            myRs = myStmt.executeQuery();
+            
+            while(myRs.next()) {
+                // finna rétt tourcompany
+                TourCompany newTC = null;
+                for(TourCompany tourCo : tc) {
+                    if(tourCo.getId() == myRs.getInt("tourCompanyId")) {
+                        newTC = tourCo;
+                        break;
+                    }
+                }
+                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("locationName"),myRs.getString("locationName"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
+                trips.add(newTrip);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(DBTripManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(myConn != null)
+                    myConn.close();
+            } catch(SQLException e) {
+                // connection close failed.
+                System.err.println(e);
+            }
+        }
+        return trips.toArray(new Trip[0]);
+    } 
     
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

@@ -6,9 +6,12 @@
 package controller;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Booking;
+import model.Customer;
+import model.Trip;
 
 /**
  *
@@ -85,8 +88,50 @@ public class DBBookingManager {
         }
     }
     
-    public static void main(String[] args) {
-        // skrifa test hér
+    public Booking[] GetBookingsByName(String name, Trip[] trips) throws SQLException, ClassNotFoundException{
+        ArrayList<Booking> bookings;
+        bookings = new ArrayList<>();
+        try{
+           Class.forName("org.sqlite.JDBC");
+           myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+           
+           Customer customer = new Customer(0, "", 0, "", "");
+           myStmt = myConn.prepareStatement("SELECT * FROM Customer WHERE name LIKE ?;");
+           myStmt.setString(1,name);
+           myRs = myStmt.executeQuery();
+           
+           while(myRs.next()){
+               customer = new Customer(myRs.getInt("id"), myRs.getString("name"), myRs.getInt("phone"), myRs.getString("address"), myRs.getString("email"));
+           }
+           
+           
+           myStmt = myConn.prepareStatement("SELECT * FROM Booking WHERE customerId LIKE ?;");
+           myStmt.setString(1, Integer.toString(customer.getId()));
+           myRs = myStmt.executeQuery();
+           
+           while(myRs.next()) {
+                // finna rétt trip
+                Trip newTrip = null;
+                for(Trip trip : trips) {
+                    if(trip.getId() == myRs.getInt("tripId")) {
+                        newTrip = trip;
+                        break;
+                    }
+                }                
+                bookings.add(new Booking(myRs.getInt("id"), customer, newTrip, myRs.getInt("numTravelers"), (myRs.getInt("hotelPickup")==1), (myRs.getInt("active")==1)));              
+           }
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(DBTripManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(myConn != null)
+                    myConn.close();
+            } catch(SQLException e) {
+                // connection close failed.
+                System.err.println(e);
+            }
+        }
+        return bookings.toArray(new Booking[0]);
     }
-
 }

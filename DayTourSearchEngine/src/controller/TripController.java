@@ -90,4 +90,9 @@ public class TripController {
         }
         return trips;
     }
+    
+    public Booking[] GetBookingsByName(String name) throws SQLException, ClassNotFoundException{
+        Trip[] trips = tripManager.getAllTrips();
+        return bookingManager.GetBookingsByName(name, trips);
+    }
 }
