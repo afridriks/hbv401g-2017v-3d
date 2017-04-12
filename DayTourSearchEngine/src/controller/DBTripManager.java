@@ -27,7 +27,7 @@ public final class DBTripManager {
         this.dbname = dbname;
     }
  
-    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, Integer type, Integer location) throws SQLException, ClassNotFoundException {
+    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String location) throws SQLException, ClassNotFoundException {
         ArrayList<Trip> trips;
         trips = new ArrayList<>();
         try {
@@ -55,8 +55,8 @@ public final class DBTripManager {
             queryString += accessible ? "accessible = 1 AND " : "";
             queryString += "price >= ? AND ";
             queryString += "price <= ? AND ";
-            queryString += "typeId = ? AND ";
-            queryString += "locationId = ? ;";
+            queryString += "typeName = ? AND ";
+            queryString += "locationName = ? ;";
             
             myStmt = myConn.prepareStatement(queryString);
             int i = 1;
@@ -78,9 +78,9 @@ public final class DBTripManager {
             i++;
             myStmt.setString(i,Integer.toString(maxPrice));
             i++;
-            myStmt.setString(i,Integer.toString(type));
+            myStmt.setString(i,type);
             i++;
-            myStmt.setString(i,Integer.toString(location));
+            myStmt.setString(i,location);
             
             myStmt.setQueryTimeout(30);
             
@@ -96,7 +96,7 @@ public final class DBTripManager {
                         break;
                     }
                 }
-                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),null,null,null,myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
+                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("locationName"),myRs.getString("locationName"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
                 trips.add(newTrip);
                 // bara til að testa
               	//System.out.println(myRs.getString("name") + ", " + myRs.getInt("maxTravelers") + ", " + myRs.getString("date") + ", " + myRs.getString("startTime"));
@@ -146,10 +146,10 @@ public final class DBTripManager {
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
-        Trip[] trips = man.search("",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,5000,30000,2,1);
+        Trip[] trips = man.search("",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,5000,30000,"Horse Trips","Selfoss");
         
         for(Trip t: trips) {
-            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName());
+            System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName() + ", " + t.getType() + ", " + t.getArea() + ", " + t.getLocation());
         }
     }
     

@@ -107,8 +107,10 @@ public class SearchFrame extends javax.swing.JFrame {
        );
 
        // Get Type and Area.
-       int type = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
-       int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
+       //int type = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
+       String type = "Hestaferð";
+       //int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
+       String location = "Selfoss";
 
 
        /*       
