@@ -62,5 +62,4 @@ public class MockDBTripManager {
         //    System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getStartTime()+ ", " + t.getPrice());
         //}
     }
-    
 }
