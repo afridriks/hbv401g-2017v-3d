@@ -92,7 +92,7 @@ public class DBBookingManager {
             
             myStmt.setQueryTimeout(30);
             
-            myStmt.executeQuery();
+            myStmt.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(DBBookingManager.class.getName()).log(Level.SEVERE, null, ex);

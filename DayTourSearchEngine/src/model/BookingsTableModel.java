@@ -20,7 +20,7 @@ public class BookingsTableModel extends AbstractTableModel{
     public BookingsTableModel(List<Booking> bookings){
         super();
         this.bookings = bookings;
-        columns = new String[]{"Customer name", "Trip name", "Date", "Number of travelers", "Hotel pickup", "Active"};
+        columns = new String[]{"Customer name", "Trip name", "Date", "Number of travelers", "Hotel pickup", "Active", "Travel Company"};
     }
 
     @Override
@@ -43,6 +43,7 @@ public class BookingsTableModel extends AbstractTableModel{
             case 3 : return booking.getNumTravelers();
             case 4 : return booking.isHotelPickup();
             case 5 : return booking.isActive();
+            case 6 : return booking.getTrip().getTourCompany().getName();
             default : return null;
         }
     }

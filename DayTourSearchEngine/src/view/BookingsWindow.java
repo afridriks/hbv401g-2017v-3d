@@ -6,7 +6,6 @@
 package view;
 
 import controller.TripController;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +18,7 @@ import javax.swing.table.TableModel;
 import model.Booking;
 import model.BookingsTableModel;
 import model.TourCompany;
-import model.Trip;
-import model.TripTableModel;
+
 
 /**
  *
@@ -168,14 +166,18 @@ public class BookingsWindow extends javax.swing.JFrame {
     private void jTourCompanyInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTourCompanyInfoActionPerformed
         // TODO add your handling code here:
         TourCompany tc = getTourCompany();
-        TourCompanyWindow tcWindow = new TourCompanyWindow(tc);
-        tcWindow.setVisible(true);
+        if(tc != null) {
+           TourCompanyWindow tcWindow = new TourCompanyWindow(tc);
+           tcWindow.setVisible(true); 
+        }
+        
     }//GEN-LAST:event_jTourCompanyInfoActionPerformed
 
     private void jCancelBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBookingActionPerformed
         try {
             // TODO add your handling code here:
-            controller.cancelBooking(getSelectedRow());
+            if(getSelectedRow() != null)
+                controller.cancelBooking(getSelectedRow());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -203,12 +205,17 @@ public class BookingsWindow extends javax.swing.JFrame {
     }
     
     public Booking getSelectedRow(){
-       int index = table.getSelectedRow();
-       return bookings.get(index);
+        if(table != null) {
+            int index = table.getSelectedRow();
+            if(index == -1) return null;
+            return bookings.get(index);
+        }
+        return null;
     }
     
     private TourCompany getTourCompany() {
         Booking selectedBooking = getSelectedRow();
+        if(selectedBooking == null) return null;
         return selectedBooking.getTrip().getTourCompany();
     }
     
