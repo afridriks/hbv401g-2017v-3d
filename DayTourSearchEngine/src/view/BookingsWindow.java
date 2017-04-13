@@ -187,7 +187,6 @@ public class BookingsWindow extends javax.swing.JFrame {
         if(jBookingsScrollPane != null){
             this.remove(jBookingsScrollPane);
         }
-        System.out.println(bookings.size());
         jBookingsScrollPane = Show();
         this.add(jBookingsScrollPane);
         jBookingsScrollPane.setSize(jBookingsPanel.getSize());
