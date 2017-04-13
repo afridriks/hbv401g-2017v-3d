@@ -30,6 +30,7 @@ public class BookingsWindow extends javax.swing.JFrame {
     private JTable table;
     private List<Booking> bookings;
     JScrollPane jBookingsScrollPane;
+    private String name;
     
     /**
      * Creates new form BookingsWindow
@@ -148,14 +149,8 @@ public class BookingsWindow extends javax.swing.JFrame {
 
     private void jSearchBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchBookingsActionPerformed
         // TODO add your handling code here:
-        String name = jNameTextField.getText();
-        try {
-            bookings = Arrays.asList(controller.GetBookingsByName(name));
-            displayBookings();
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        name = jNameTextField.getText();
+        search();
     }//GEN-LAST:event_jSearchBookingsActionPerformed
 
     private void jCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCloseButtonActionPerformed
@@ -181,8 +176,20 @@ public class BookingsWindow extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // leita aftur til að teikna töflu aftur með uppfærðum gögnum
+        search();
     }//GEN-LAST:event_jCancelBookingActionPerformed
 
+    
+    private void search() {
+        try {
+            bookings = Arrays.asList(controller.GetBookingsByName(name));
+            displayBookings();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+    
     private void displayBookings() {
         if(jBookingsScrollPane != null){
             this.remove(jBookingsScrollPane);
