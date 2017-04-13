@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -54,8 +56,7 @@ public class SearchFrame extends javax.swing.JFrame {
      * 
      */
     private void search() throws SQLException, ClassNotFoundException {
-        sidePanel.setVisible(false);
-        infoPanel.setVisible(true);
+
         
         // Harðkóðuð leit sem virkar //
             /*
@@ -126,12 +127,18 @@ public class SearchFrame extends javax.swing.JFrame {
        System.out.println(maxPrice);
        System.out.println(type);
        System.out.println(location); */
-       
-        results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
-        Trip[] sorted = controller.sortTripsByName(results);
-        showResults(sorted);
-        this.validate();
-        this.repaint();
+        if(minPrice > maxPrice) {
+           showDialog("Minimum price must be lower than maximum price.");
+        }
+        else {
+            sidePanel.setVisible(false);
+            infoPanel.setVisible(true);
+            results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
+            Trip[] sorted = controller.sortTripsByName(results);
+            showResults(sorted);
+            this.validate();
+            this.repaint();
+        }
         
     }
     
@@ -175,6 +182,10 @@ public class SearchFrame extends javax.swing.JFrame {
         bookSPane.setLocation(pane.getLocation());
         this.revalidate();
         this.repaint();
+    }
+    
+    private void showDialog(String message) {
+        JOptionPane.showMessageDialog(new JFrame(), message);
     }
 
     /**
@@ -690,7 +701,6 @@ public class SearchFrame extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         try {
             search();
-            
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -712,12 +722,11 @@ public class SearchFrame extends javax.swing.JFrame {
                         hotelPickup.isSelected(),
                         true
                 );
-                
-                
+                showDialog("Trip booked!");
            } catch (ClassNotFoundException ex) {
             Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         this.validate();
         this.repaint();
         

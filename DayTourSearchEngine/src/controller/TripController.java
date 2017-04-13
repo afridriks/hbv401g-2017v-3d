@@ -97,6 +97,11 @@ public class TripController {
     }
     
     public void cancelBooking(Booking booking) throws ClassNotFoundException {
+        int placesCancelled = booking.getNumTravelers();
+        Trip trip = booking.getTrip();
+        int placesBefore = trip.getAvailablePlaces();
+        trip.setAvailablePlaces(placesBefore + placesCancelled);
+        tripManager.updateAvailablePlaces(trip);
         bookingManager.cancelBooking(booking);
     }
     
