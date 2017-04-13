@@ -95,4 +95,9 @@ public class TripController {
         Trip[] trips = tripManager.getAllTrips();
         return bookingManager.GetBookingsByName(name, trips);
     }
+    
+    public void cancelBooking(Booking booking) throws ClassNotFoundException {
+        bookingManager.cancelBooking(booking);
+    }
+    
 }

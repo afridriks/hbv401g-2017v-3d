@@ -171,7 +171,7 @@ public final class DBTripManager {
                         break;
                     }
                 }
-                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("locationName"),myRs.getString("locationName"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
+                Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("area"),myRs.getString("area"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
                 trips.add(newTrip);
             }
         }
