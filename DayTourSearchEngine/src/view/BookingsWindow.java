@@ -173,8 +173,12 @@ public class BookingsWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jTourCompanyInfoActionPerformed
 
     private void jCancelBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBookingActionPerformed
-        // TODO add your handling code here:
-        controller.cancelBooking(getSelectedRow());
+        try {
+            // TODO add your handling code here:
+            controller.cancelBooking(getSelectedRow());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jCancelBookingActionPerformed
 
     private void displayBookings() {

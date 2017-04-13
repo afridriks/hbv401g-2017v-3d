@@ -32,16 +32,35 @@ public class DBBookingManager {
         try {
             
             
-            System.out.println(booking.getCustomer().getId());
-            System.out.println(booking.getTrip().getId());
-            System.out.println(booking.getNumTravelers());
-            System.out.println(booking.isHotelPickup());
-            System.out.println(booking.isActive());
                     
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
+            
+            Customer customer = booking.getCustomer();
+            myStmt = myConn.prepareStatement("INSERT INTO Customer(name, phone, address, email) VALUES(?,?,?,?);");
+            myStmt.setString(1,customer.getName());
+            myStmt.setInt(2,customer.getPhoneNumber());
+            myStmt.setString(3,customer.getAddress());
+            myStmt.setString(4,customer.getEmail());
+
+            myStmt.setQueryTimeout(30);
+            
+            myStmt.executeUpdate();
+            
+            myStmt = myConn.prepareStatement("SELECT * FROM Customer WHERE name like ? AND phone = ? AND address LIKE ? AND email LIKE ?;");
+            myStmt.setString(1,customer.getName());
+            myStmt.setInt(2,customer.getPhoneNumber());
+            myStmt.setString(3,customer.getAddress());
+            myStmt.setString(4,customer.getEmail());
+
+            myStmt.setQueryTimeout(30);
+            
+            myRs = myStmt.executeQuery();
+
+            int customerId = myRs.getInt("id");
+            
             myStmt = myConn.prepareStatement("INSERT INTO Booking(customerId, tripId, numTravelers, hotelPickup, active) VALUES(?,?,?,?,?);");
-            myStmt.setInt(1,booking.getCustomer().getId());
+            myStmt.setInt(1,customerId);
             myStmt.setInt(2,booking.getTrip().getId());
             myStmt.setInt(3,booking.getNumTravelers());
             myStmt.setInt(4,(booking.isHotelPickup() ? 1 : 0));
