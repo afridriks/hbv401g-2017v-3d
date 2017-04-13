@@ -198,8 +198,6 @@ public class BookingsWindow extends javax.swing.JFrame {
     public JScrollPane Show(){
         TableModel model = new BookingsTableModel(bookings);
         table = new JTable(model);
-        table.removeColumn(table.getColumnModel().getColumn(2));
-        table.removeColumn(table.getColumnModel().getColumn(1)); 
         JScrollPane panel = new JScrollPane(table);
         return panel;
     }
