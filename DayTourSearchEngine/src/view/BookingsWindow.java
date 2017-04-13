@@ -26,7 +26,7 @@ import model.TourCompany;
  */
 public class BookingsWindow extends javax.swing.JFrame {
 
-    private TripController controller;
+    private final TripController controller;
     private JTable table;
     private List<Booking> bookings;
     JScrollPane jBookingsScrollPane;
@@ -34,6 +34,7 @@ public class BookingsWindow extends javax.swing.JFrame {
     
     /**
      * Creates new form BookingsWindow
+     * @param controller
      */
     public BookingsWindow(TripController controller) {
         initComponents();
@@ -74,6 +75,12 @@ public class BookingsWindow extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Enter name:");
+
+        jNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNameTextFieldActionPerformed(evt);
+            }
+        });
 
         jSearchBookings.setText("Search for bookings");
         jSearchBookings.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +186,12 @@ public class BookingsWindow extends javax.swing.JFrame {
         // leita aftur til að teikna töflu aftur með uppfærðum gögnum
         search();
     }//GEN-LAST:event_jCancelBookingActionPerformed
+
+    private void jNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNameTextFieldActionPerformed
+        // TODO add your handling code here:
+        name = jNameTextField.getText();
+        search();
+    }//GEN-LAST:event_jNameTextFieldActionPerformed
 
     
     private void search() {

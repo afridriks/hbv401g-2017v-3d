@@ -20,9 +20,9 @@ public class TripTableModel extends AbstractTableModel{
     public TripTableModel(List<Trip> tripsArray){
         super();
         trips = tripsArray;
-        columns = new String[]{"Auðkenni", "Nafn", "Dagsetning", "Upphafstími", "Lokatími", "Lýsing", 
-                               "Fjölskylduvænt", "Aðgengilegt", "Verð", "Tegund", "Staðsetning", 
-                               "Nánari staðsetning", "Heildarfjödi ferðamanna", "Laus sæti", "Ferðafélag"};
+        columns = new String[]{"ID", "Name", "Date", "Start time", "Finish time", "Description", 
+                               "Family friendly", "Accessible", "Price", "Type", "Area", 
+                               "Location", "Maximum travelers", "Available places", "Tour company"};
     }
 
     @Override

@@ -46,8 +46,12 @@ public class BookTripPanel extends javax.swing.JPanel {
     }
         
     public Trip getSelectedRow(){
-       int index = table.getSelectedRow();
-       return trips.get(index);
+        if(table != null) {
+            int index = table.getSelectedRow();
+            if(index == -1) return null;
+            return trips.get(index);
+        }
+        return null;
     }
     
 

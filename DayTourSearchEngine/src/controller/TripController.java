@@ -5,7 +5,7 @@
  */
 package controller;
 
-import java.sql.Date;   // líka til java.util.Date, en þessi hentar líklega betur fyrir okkur útaf SQLite
+import java.sql.Date;   
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Arrays;
