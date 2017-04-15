@@ -7,6 +7,7 @@ package controller;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Booking;
@@ -114,18 +115,30 @@ public class DBBookingManager {
            Class.forName("org.sqlite.JDBC");
            myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
            
-           Customer customer = new Customer(0, "", 0, "", "");
-           myStmt = myConn.prepareStatement("SELECT * FROM Customer WHERE name LIKE ?;");
-           myStmt.setString(1,name);
+          ArrayList<Customer> customers;
+          customers = new ArrayList<>();
+           myStmt = myConn.prepareStatement("SELECT * FROM Customer WHERE name LIKE ? ;");
+           myStmt.setString(1,"%"+name+"%");
            myRs = myStmt.executeQuery();
            
            while(myRs.next()){
-               customer = new Customer(myRs.getInt("id"), myRs.getString("name"), myRs.getInt("phone"), myRs.getString("address"), myRs.getString("email"));
+              customers.add(new Customer(myRs.getInt("id"), myRs.getString("name"), myRs.getInt("phone"), myRs.getString("address"), myRs.getString("email")));
+            }
+           
+           String statement = "SELECT * FROM Booking WHERE active = 1 ";
+           
+           for(int i = 0; i < customers.size() - 1; i++){
+               if(i == 0)
+                   statement += "AND ( customerid = ? ";
+               else
+                   statement += "OR customerid = ? ";
+           }           
+           statement += ");";
+                      
+           myStmt = myConn.prepareStatement(statement);
+           for(int i = 1; i < customers.size(); i++){
+               myStmt.setString(i, Integer.toString(customers.get(i).getId()));
            }
-           
-           
-           myStmt = myConn.prepareStatement("SELECT * FROM Booking WHERE customerId LIKE ?;");
-           myStmt.setString(1, Integer.toString(customer.getId()));
            myRs = myStmt.executeQuery();
            
            while(myRs.next()) {
@@ -136,8 +149,15 @@ public class DBBookingManager {
                         newTrip = trip;
                         break;
                     }
-                }                
-                bookings.add(new Booking(myRs.getInt("id"), customer, newTrip, myRs.getInt("numTravelers"), (myRs.getInt("hotelPickup")==1), (myRs.getInt("active")==1)));              
+                }   
+                Customer newCust = null;
+                for(Customer cust : customers) {
+                    if(cust.getId() == myRs.getInt("customerId")) {
+                        newCust = cust;
+                        break;
+                    }
+                }
+                bookings.add(new Booking(myRs.getInt("id"), newCust, newTrip, myRs.getInt("numTravelers"), (myRs.getInt("hotelPickup")==1), (myRs.getInt("active")==1)));              
            }
         } 
         catch (SQLException ex) {
