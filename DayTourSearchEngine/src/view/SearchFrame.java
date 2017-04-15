@@ -780,14 +780,14 @@ public class SearchFrame extends javax.swing.JFrame {
 
     private void tcInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcInfoButtonActionPerformed
         TourCompanyWindow tcWindow;
-        TourCompany TourCompany = null;
+        TourCompany TourCompany = bookingPanel.getSelectedRow().getTourCompany();
         tcWindow = new TourCompanyWindow(TourCompany);
         tcWindow.setVisible(true); 
     }//GEN-LAST:event_tcInfoButtonActionPerformed
 
     private void bookingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingsButtonActionPerformed
         BookingsWindow bookWindow;
-        TripController TripController = null;
+        TripController TripController = controller;
         bookWindow = new BookingsWindow(TripController);
         bookWindow.setVisible(true);
     }//GEN-LAST:event_bookingsButtonActionPerformed
