@@ -36,10 +36,14 @@ public class BookingsWindow extends javax.swing.JFrame {
      * Creates new form BookingsWindow
      * @param controller
      */
-    public BookingsWindow(TripController controller) {
+    BookingsWindow(TripController controller) {
         initComponents();
         this.controller = controller;
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    BookingsWindow() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

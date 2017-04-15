@@ -20,11 +20,15 @@ public class TourCompanyWindow extends javax.swing.JFrame {
      * Creates new form TourCompanyWindow
      * @param tc
      */
-    public TourCompanyWindow(TourCompany tc) {
+    TourCompanyWindow(TourCompany tc) {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.tc = tc;
         init();
+    }
+
+    TourCompanyWindow() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     private void init() {
@@ -179,7 +183,7 @@ public class TourCompanyWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new TourCompanyWindow().setVisible(true);
+                new TourCompanyWindow().setVisible(true);
             }
         });
     }

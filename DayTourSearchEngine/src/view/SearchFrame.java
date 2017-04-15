@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import model.TourCompany;
 
 
 /**
@@ -230,6 +231,7 @@ public class SearchFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        bookingsButton = new javax.swing.JButton();
         infoPanel = new javax.swing.JPanel();
         infoButton = new javax.swing.JButton();
         nameButton = new javax.swing.JRadioButton();
@@ -328,6 +330,13 @@ public class SearchFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Enter keyword:");
 
+        bookingsButton.setText("Bookings");
+        bookingsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookingsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
@@ -385,8 +394,10 @@ public class SearchFrame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(keyWordSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(searchPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(110, 110, 110)
+                                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(bookingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(67, 67, 67)
                                         .addComponent(titleLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4)))
@@ -404,7 +415,8 @@ public class SearchFrame extends javax.swing.JFrame {
                             .addComponent(jLabel4)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bookingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(keyWordSearchBox)
@@ -424,11 +436,6 @@ public class SearchFrame extends javax.swing.JFrame {
                         .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(accessibleButton)
-                        .addGap(11, 11, 11)
-                        .addComponent(familyFriendlyButton))
-                    .addGroup(searchPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(startTimeLabel)
@@ -438,13 +445,18 @@ public class SearchFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel2)))
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(accessibleButton)
+                        .addGap(11, 11, 11)
+                        .addComponent(familyFriendlyButton)))
+                .addGap(18, 18, 18)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         infoPanel.setMaximumSize(new java.awt.Dimension(67, 82));
@@ -569,6 +581,11 @@ public class SearchFrame extends javax.swing.JFrame {
         hotelPickup.setText("Hotel Pickup");
 
         tcInfoButton.setText("Tour Company Information");
+        tcInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tcInfoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bookingInfoPanelLayout = new javax.swing.GroupLayout(bookingInfoPanel);
         bookingInfoPanel.setLayout(bookingInfoPanelLayout);
@@ -761,6 +778,20 @@ public class SearchFrame extends javax.swing.JFrame {
         showResults(sorted);
     }//GEN-LAST:event_priceButtonActionPerformed
 
+    private void tcInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcInfoButtonActionPerformed
+        TourCompanyWindow tcWindow;
+        TourCompany TourCompany = null;
+        tcWindow = new TourCompanyWindow(TourCompany);
+        tcWindow.setVisible(true); 
+    }//GEN-LAST:event_tcInfoButtonActionPerformed
+
+    private void bookingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingsButtonActionPerformed
+        BookingsWindow bookWindow;
+        TripController TripController = null;
+        bookWindow = new BookingsWindow(TripController);
+        bookWindow.setVisible(true);
+    }//GEN-LAST:event_bookingsButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -800,6 +831,7 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JLabel areaLabel;
     private javax.swing.JButton bookButton;
     private javax.swing.JPanel bookingInfoPanel;
+    private javax.swing.JButton bookingsButton;
     private javax.swing.JPanel bookingsPanel;
     private datechooser.beans.DateChooserPanel dateChooser;
     private javax.swing.JMenu editMenu;
@@ -844,4 +876,8 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> typeCombo;
     private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
+
+    private TourCompany getTourCompany() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
