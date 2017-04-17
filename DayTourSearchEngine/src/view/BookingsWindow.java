@@ -194,7 +194,7 @@ public class BookingsWindow extends javax.swing.JFrame {
             else
                 showDialog("No booking chosen!");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
+            showDialog("This request could not be processed, please try again");
         }
         // leita aftur til að teikna töflu aftur með uppfærðum gögnum
         search();
@@ -209,10 +209,10 @@ public class BookingsWindow extends javax.swing.JFrame {
     
     private void search() {
         try {
-            bookings = Arrays.asList(controller.GetBookingsByName(name));
+            bookings = Arrays.asList(controller.GetBookingsByName(jNameTextField.getText()));
             displayBookings();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
+            showDialog("This request could not be processed, please try again");
         }
      }
     
@@ -279,13 +279,11 @@ public class BookingsWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new BookingsWindow(new TripController()).setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new BookingsWindow(new TripController()).setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

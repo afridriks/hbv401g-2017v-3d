@@ -724,7 +724,7 @@ public class SearchFrame extends javax.swing.JFrame {
         try {
             search();
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
+            showDialog("This request could not be processed, please try again");
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -767,7 +767,7 @@ public class SearchFrame extends javax.swing.JFrame {
                 );
                 showDialog("Trip booked!");
            } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SearchFrame.class.getName()).log(Level.SEVERE, null, ex);
+            showDialog("Unfortunately the Trip could not be booked, please try again later.");
         }
         
         this.validate();

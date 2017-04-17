@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Time;
 import model.TourCompany;
 import model.Trip;
-import controller.TripController;
 
 /**
  *

@@ -32,8 +32,6 @@ public class DBBookingManager {
     public void bookTrip(Booking booking) throws ClassNotFoundException {
         try {
             
-            
-                    
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             
@@ -134,7 +132,10 @@ public class DBBookingManager {
                    statement += "OR customerid = ? ";
            }           
            statement += ");";
-                      
+           
+           System.out.println(statement);
+           System.out.println(customers.size());
+           
            myStmt = myConn.prepareStatement(statement);
            for(int i = 1; i < customers.size(); i++){
                myStmt.setString(i, Integer.toString(customers.get(i).getId()));
