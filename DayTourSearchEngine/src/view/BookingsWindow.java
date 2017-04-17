@@ -191,6 +191,8 @@ public class BookingsWindow extends javax.swing.JFrame {
             // TODO add your handling code here:
             if(getSelectedRow() != null)
                 controller.cancelBooking(getSelectedRow());
+            else
+                showDialog("No booking chosen!");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BookingsWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
