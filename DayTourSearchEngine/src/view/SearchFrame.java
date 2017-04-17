@@ -105,8 +105,7 @@ public class SearchFrame extends javax.swing.JFrame {
             sidePanel.setVisible(false);
             infoPanel.setVisible(true);
             results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
-            Trip[] sorted = controller.sortTripsByName(results);
-            showResults(sorted);
+            showResults(results);
             this.validate();
             this.repaint();
         }

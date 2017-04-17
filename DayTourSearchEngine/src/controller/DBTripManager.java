@@ -49,14 +49,16 @@ public final class DBTripManager {
             queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
             queryString += description.length() == 0 ? "": "description LIKE ? AND ";
             queryString += "date = ? AND ";
-            queryString += "startTime >= ? OR ";
-            queryString += "startTime <= ? OR ";
+            queryString += "startTime <= ? AND ";
+            queryString += "endTime <= ? AND ";
             queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
             queryString += accessible ? "accessible = 1 AND " : "";
             queryString += "price >= ? AND ";
             queryString += "price <= ? AND ";
             queryString += "typeName = ? AND ";
             queryString += "area = ? ;";
+            
+            System.out.println(queryString);
             
             myStmt = myConn.prepareStatement(queryString);
             int i = 1;
@@ -81,6 +83,14 @@ public final class DBTripManager {
             myStmt.setString(i,type);
             i++;
             myStmt.setString(i,area);
+            
+            System.out.println(date.toString());
+            System.out.println(startTime.toString());
+            System.out.println(endTime.toString());
+            System.out.println(Integer.toString(minPrice));
+            System.out.println(Integer.toString(maxPrice));
+            System.out.println(type);
+            System.out.println(area);
             
             myStmt.setQueryTimeout(30);
             
