@@ -747,7 +747,7 @@ public class SearchFrame extends javax.swing.JFrame {
         boolean hpickup = hotelPickup.isSelected();
 
         // Check booking info
-        if(numberOfTravelers == 0 || name == "" || address == "" || email == "") {
+        if(numberOfTravelers == 0 || "".equals(name) || "".equals(address) || "".equals(email)) {
             showDialog("Some fields have not been filled out!");
             return;
         }
@@ -769,6 +769,12 @@ public class SearchFrame extends javax.swing.JFrame {
            } catch (ClassNotFoundException ex) {
             showDialog("Unfortunately the Trip could not be booked, please try again later.");
         }
+            
+        // Clean fields
+        nameTextField.setText("");
+        addressTextField.setText("");
+        phoneTextField.setText("");
+        emailTextField.setText("");
         
         this.validate();
         this.repaint();
