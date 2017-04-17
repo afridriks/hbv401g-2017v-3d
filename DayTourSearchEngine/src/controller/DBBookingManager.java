@@ -124,21 +124,18 @@ public class DBBookingManager {
             }
            
            String statement = "SELECT * FROM Booking WHERE active = 1 ";
-           
-           for(int i = 0; i < customers.size() - 1; i++){
+                      
+           for(int i = 0; i < customers.size(); i++){
                if(i == 0)
                    statement += "AND ( customerid = ? ";
                else
                    statement += "OR customerid = ? ";
            }           
            statement += ");";
-           
-           System.out.println(statement);
-           System.out.println(customers.size());
-           
+                      
            myStmt = myConn.prepareStatement(statement);
-           for(int i = 1; i < customers.size(); i++){
-               myStmt.setString(i, Integer.toString(customers.get(i).getId()));
+           for(int i = 0; i < customers.size(); i++){
+               myStmt.setString(i+1, Integer.toString(customers.get(i).getId()));
                System.out.println(customers.get(i).getId());
            }
            myRs = myStmt.executeQuery();
