@@ -49,8 +49,6 @@ public class SearchFrame extends javax.swing.JFrame {
         bookButton.setVisible(false);
         bookingInfoPanel.setVisible(false);
         infoPanel.setVisible(false);
-        
-        
     }
     
     /**
@@ -130,8 +128,9 @@ public class SearchFrame extends javax.swing.JFrame {
        System.out.println(location); */
         if(minPrice > maxPrice) {
            showDialog("Minimum price must be lower than maximum price.");
-        }
-        else {
+        } else if(endTime.before(startTime)) {
+            showDialog("Start time must be before end time");
+        } else {
             sidePanel.setVisible(false);
             infoPanel.setVisible(true);
             results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
@@ -185,7 +184,7 @@ public class SearchFrame extends javax.swing.JFrame {
         this.repaint();
     }
     
-    private void showDialog(String message) {
+    void showDialog(String message) {
         JOptionPane.showMessageDialog(new JFrame(), message);
     }
 
@@ -731,18 +730,39 @@ public class SearchFrame extends javax.swing.JFrame {
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         
-        // If the trip is inactive the .getAvailablePlaces() function always
-        // returns false.
-        if(bookingPanel.getSelectedRow() != null && bookingPanel.getSelectedRow().getAvailablePlaces() > Integer.parseInt(nrTravelers.getValue().toString()))
+        // Get seleted Trip from ResultsPanel.
+        Trip selectedRow = bookingPanel.getSelectedRow();
+        if(selectedRow == null) {
+            showDialog("No trip chosen!");
+            return;
+        }
+        
+        // A Trip has been selected, get booking info.
+        int availablePlaces = selectedRow.getAvailablePlaces();
+        int numberOfTravelers = Integer.parseInt(nrTravelers.getValue().toString());
+        String name = nameTextField.getText();
+        String address = addressTextField.getText();
+        String phone = phoneTextField.getText();
+        String email = emailTextField.getText();
+        boolean hpickup = hotelPickup.isSelected();
+
+        // Check booking info
+        if(numberOfTravelers == 0 || name == "" || address == "" || email == "") {
+            showDialog("Some fields have not been filled out!");
+            return;
+        }
+        
+        // If possible, book the Trip.
+        if(availablePlaces > numberOfTravelers) {
             try {
                 controller.bookTrip(
-                        nameTextField.getText(),
-                        Integer.parseInt(phoneTextField.getText()),
-                        addressTextField.getText(),
-                        emailTextField.getText(),
-                        bookingPanel.getSelectedRow(),
-                        Integer.parseInt(nrTravelers.getValue().toString()),
-                        hotelPickup.isSelected(),
+                        name,
+                        Integer.parseInt(phone),
+                        address,
+                        email,
+                        selectedRow,
+                        numberOfTravelers,
+                        hpickup,
                         true
                 );
                 showDialog("Trip booked!");
@@ -752,6 +772,10 @@ public class SearchFrame extends javax.swing.JFrame {
         
         this.validate();
         this.repaint();
+        } else {
+            // Trip is full or inactive
+            showDialog("Unfortunately the Trip you have chosen is either fully booked or inactive.");
+        }
         
     }//GEN-LAST:event_bookButtonActionPerformed
 
@@ -759,6 +783,8 @@ public class SearchFrame extends javax.swing.JFrame {
         Trip selectedRow = panel.getSelectedRow();
         if(selectedRow != null) {
             showInfo(selectedRow);
+        } else {
+            showDialog("No Trip chosen!");
         }
     }//GEN-LAST:event_infoButtonActionPerformed
 
@@ -779,7 +805,12 @@ public class SearchFrame extends javax.swing.JFrame {
 
     private void tcInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcInfoButtonActionPerformed
         TourCompanyWindow tcWindow;
-        TourCompany TourCompany = bookingPanel.getSelectedRow().getTourCompany();
+        Trip selectedRow = bookingPanel.getSelectedRow();
+        if(selectedRow == null) {
+            showDialog("No Trip chosen!");
+            return;
+        }
+        TourCompany TourCompany = selectedRow.getTourCompany();
         tcWindow = new TourCompanyWindow(TourCompany);
         tcWindow.setVisible(true); 
     }//GEN-LAST:event_tcInfoButtonActionPerformed

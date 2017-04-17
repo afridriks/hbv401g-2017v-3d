@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
@@ -44,6 +45,10 @@ public class BookingsWindow extends javax.swing.JFrame {
 
     BookingsWindow() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private void showDialog(String message) {
+        JOptionPane.showMessageDialog(new JFrame(), message);
     }
 
     /**
@@ -175,6 +180,8 @@ public class BookingsWindow extends javax.swing.JFrame {
         if(tc != null) {
            TourCompanyWindow tcWindow = new TourCompanyWindow(tc);
            tcWindow.setVisible(true); 
+        } else {
+            showDialog("No booking chosen!");
         }
         
     }//GEN-LAST:event_jTourCompanyInfoActionPerformed
