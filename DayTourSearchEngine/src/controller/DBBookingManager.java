@@ -139,8 +139,10 @@ public class DBBookingManager {
            myStmt = myConn.prepareStatement(statement);
            for(int i = 1; i < customers.size(); i++){
                myStmt.setString(i, Integer.toString(customers.get(i).getId()));
+               System.out.println(customers.get(i).getId());
            }
            myRs = myStmt.executeQuery();
+           
            
            while(myRs.next()) {
                 // finna rétt trip

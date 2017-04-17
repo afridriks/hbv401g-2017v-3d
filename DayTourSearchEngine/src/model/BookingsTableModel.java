@@ -41,8 +41,14 @@ public class BookingsTableModel extends AbstractTableModel{
             case 1 : return booking.getTrip().getName();
             case 2 : return booking.getTrip().getDate();
             case 3 : return booking.getNumTravelers();
-            case 4 : return booking.isHotelPickup();
-            case 5 : return booking.isActive();
+            case 4 : if(booking.isHotelPickup())
+                        return "Yes";
+                     else
+                        return "No";
+            case 5 : if(booking.isActive())
+                        return "Yes";
+                     else 
+                        return "No";
             case 6 : return booking.getTrip().getTourCompany().getName();
             default : return null;
         }
