@@ -94,6 +94,9 @@ public class SearchFrame extends javax.swing.JFrame {
        //int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
        String location = "Selfoss";
 
+       
+       
+       
         if(minPrice > maxPrice) {
            showDialog("Minimum price must be lower than maximum price.");
         } else if(endTime.before(startTime)) {
@@ -192,7 +195,7 @@ public class SearchFrame extends javax.swing.JFrame {
             Calendar.HOUR_OF_DAY);
         endTimeSpinner = new javax.swing.JSpinner(em);
         keyWordSearchBox = new javax.swing.JTextField();
-        jSlider1 = new javax.swing.JSlider(0, 50000, 25000);
+        jSlider1 = new javax.swing.JSlider(0, 50000, 5000);
         jSlider2 = new javax.swing.JSlider(0, 50000, 25000);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -279,7 +282,7 @@ public class SearchFrame extends javax.swing.JFrame {
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
-        jSlider1.setValue(25);
+        jSlider1.setValue(0);
 
         jSlider2.setMajorTickSpacing(10);
         jSlider2.setMaximum(50);
@@ -287,7 +290,6 @@ public class SearchFrame extends javax.swing.JFrame {
         jSlider2.setPaintLabels(true);
         jSlider2.setPaintTicks(true);
         jSlider2.setSnapToTicks(true);
-        jSlider2.setValue(25);
 
         jLabel1.setText("Mininum price:");
 
