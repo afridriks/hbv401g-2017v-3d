@@ -49,14 +49,14 @@ public final class DBTripManager {
             queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
             queryString += description.length() == 0 ? "": "description LIKE ? AND ";
             queryString += "date = ? AND ";
-            queryString += "startTime <= ? AND ";
+            queryString += "startTime >= ? AND ";
             queryString += "endTime <= ? AND ";
             queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
             queryString += accessible ? "accessible = 1 AND " : "";
             queryString += "price >= ? AND ";
             queryString += "price <= ? AND ";
-            queryString += "typeName = ? AND ";
-            queryString += "area = ? ;";
+            queryString += "typeName LIKE ? AND ";
+            queryString += "area LIKE ? ;";
             
             System.out.println(queryString);
             
@@ -70,11 +70,11 @@ public final class DBTripManager {
                 myStmt.setString(i,"%"+description+"%");
                 i++;
             }
-            myStmt.setString(i,date.toString());
+            myStmt.setString(i,date.toString().substring(0, 5) + date.toString().substring(6,10));
             i++;
-            myStmt.setString(i,startTime.toString());
+            myStmt.setString(i,startTime.toString().substring(0, 5));
             i++;
-            myStmt.setString(i,endTime.toString());
+            myStmt.setString(i,endTime.toString().substring(0, 5));
             i++;
             myStmt.setString(i,Integer.toString(minPrice));
             i++;
@@ -84,9 +84,9 @@ public final class DBTripManager {
             i++;
             myStmt.setString(i,area);
             
-            System.out.println(date.toString());
-            System.out.println(startTime.toString());
-            System.out.println(endTime.toString());
+            System.out.println(date.toString().substring(0, 5) + date.toString().substring(6,10));
+            System.out.println(startTime.toString().substring(0, 5));
+            System.out.println(endTime.toString().substring(0,5));
             System.out.println(Integer.toString(minPrice));
             System.out.println(Integer.toString(maxPrice));
             System.out.println(type);
@@ -202,7 +202,7 @@ public final class DBTripManager {
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
-        Trip[] trips = man.search("",Date.valueOf("2017-06-22"),Time.valueOf("09:00:00"),Time.valueOf("11:00:00"),"mm",false,false,5000,30000,"Horse Trips","Selfoss");
+        Trip[] trips = man.search("",Date.valueOf("2017-6-22"),Time.valueOf("10:00:00"),Time.valueOf("13:00:00"),"",false,false,5000,30000,"Horse Trips","Western region");
         
         for(Trip t: trips) {
             System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName() + ", " + t.getType() + ", " + t.getArea() + ", " + t.getLocation());
