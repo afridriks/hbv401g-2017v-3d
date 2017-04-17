@@ -6,7 +6,6 @@
 package view;
 
 
-//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import controller.TripController;
 import model.Trip;
 import java.sql.Date;
@@ -55,23 +54,6 @@ public class SearchFrame extends javax.swing.JFrame {
      * 
      */
     private void search() throws SQLException, ClassNotFoundException {
-
-        
-        // Harðkóðuð leit sem virkar //
-            /*
-        String tripName = "Hestaferðin";
-        Date date = new Date(117, 05, 22);
-        Time startTime = new Time(9, 0, 0);
-        Time endTime = new Time(18, 0, 0);
-        String description = "Skemmtileg hestaferð";
-        boolean familyFriendly = false;
-        boolean accessible = false;
-        int minPrice = 10000;
-        int maxPrice = 20000;
-        int type = 2;
-        int location = 1;
-        */
-        
         
         // Extract date on sql-format from Calendar.
         Calendar d = dateChooser.getSelectedDate();
@@ -112,20 +94,6 @@ public class SearchFrame extends javax.swing.JFrame {
        //int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
        String location = "Selfoss";
 
-
-       /*       
-       // Execute search and display
-       System.out.println(tripName);
-       System.out.println(date);
-       System.out.println(startTime);
-       System.out.println(endTime);
-       System.out.println(description);
-       System.out.println(familyFriendly);
-       System.out.println(accessible);
-       System.out.println(minPrice);
-       System.out.println(maxPrice);
-       System.out.println(type);
-       System.out.println(location); */
         if(minPrice > maxPrice) {
            showDialog("Minimum price must be lower than maximum price.");
         } else if(endTime.before(startTime)) {
