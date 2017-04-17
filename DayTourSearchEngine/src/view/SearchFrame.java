@@ -225,11 +225,6 @@ public class SearchFrame extends javax.swing.JFrame {
         hotelPickup = new javax.swing.JCheckBox();
         nrTravelers = new javax.swing.JSpinner();
         tcInfoButton = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        aboutMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Day Trip Search Engine");
@@ -628,26 +623,6 @@ public class SearchFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        fileMenu.setText("File");
-
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(exitMenuItem);
-
-        jMenuBar1.add(fileMenu);
-
-        editMenu.setText("Edit");
-        jMenuBar1.add(editMenu);
-
-        aboutMenu.setText("About");
-        jMenuBar1.add(aboutMenu);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -685,10 +660,6 @@ public class SearchFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         try {
@@ -829,7 +800,6 @@ public class SearchFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu aboutMenu;
     private javax.swing.JRadioButton accessibleButton;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;
@@ -840,14 +810,11 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JButton bookingsButton;
     private javax.swing.JPanel bookingsPanel;
     private datechooser.beans.DateChooserPanel dateChooser;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel endTimeLabel;
     private javax.swing.JSpinner endTimeSpinner;
-    private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JRadioButton familyFriendlyButton;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JCheckBox hotelPickup;
     private javax.swing.JButton infoButton;
     private javax.swing.JPanel infoPanel;
@@ -855,7 +822,6 @@ public class SearchFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
     private javax.swing.JTextField keyWordSearchBox;
