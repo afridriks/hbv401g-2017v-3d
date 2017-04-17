@@ -89,12 +89,27 @@ public class SearchFrame extends javax.swing.JFrame {
        );
 
        // Get Type and Area.
-       //int type = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
-       String type = "Horse Trips";
-       //int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
-       String area = "Western region";
-
+       int t = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
+       String type = "";
+       switch (t){
+           case 1 : type = "Golden Circle"; break;
+           case 2 : type = "Horse Trips"; break;
+           case 3 : type = "Volcano"; break;
+           case 4 : type = "Glaciers"; break;
+           case 5 : type = "Beer Trips"; break;
+           case 6 : type = "Food Trips"; break;
+       }
        
+       int l = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
+       String area = "";
+       switch (l) {
+           case 1 : area = "Capital area"; break;
+           case 2 : area = "Eastern region"; break;
+           case 3 : area = "Southern region"; break;
+           case 4 : area = "Northern region"; break;
+           case 5 : area = "Western region"; break;
+           case 6 : area = "Highlands of Iceland"; break;
+       }      
        
        
         if(minPrice > maxPrice) {

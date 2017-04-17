@@ -70,7 +70,7 @@ public final class DBTripManager {
                 myStmt.setString(i,"%"+description+"%");
                 i++;
             }
-            myStmt.setString(i,date.toString().substring(0, 5) + date.toString().substring(6,10));
+            myStmt.setString(i,date.toString()/*.substring(0, 5) + date.toString().substring(6,10)*/);
             i++;
             myStmt.setString(i,startTime.toString().substring(0, 5));
             i++;
@@ -84,7 +84,7 @@ public final class DBTripManager {
             i++;
             myStmt.setString(i,area);
             
-            System.out.println(date.toString().substring(0, 5) + date.toString().substring(6,10));
+            System.out.println(date.toString()/*.substring(0, 5) + date.toString().substring(6,10)*/);
             System.out.println(startTime.toString().substring(0, 5));
             System.out.println(endTime.toString().substring(0,5));
             System.out.println(Integer.toString(minPrice));
