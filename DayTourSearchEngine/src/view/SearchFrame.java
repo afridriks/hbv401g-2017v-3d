@@ -90,9 +90,9 @@ public class SearchFrame extends javax.swing.JFrame {
 
        // Get Type and Area.
        //int type = typeCombo.getSelectedIndex()+1; // t.d. "Hestaferð"
-       String type = "Hestaferð";
+       String type = "Horse Trips";
        //int location = areaCombo.getSelectedIndex()+1;  // t.d. "Selfoss"   
-       String location = "Selfoss";
+       String area = "Western region";
 
        
        
@@ -104,7 +104,7 @@ public class SearchFrame extends javax.swing.JFrame {
         } else {
             sidePanel.setVisible(false);
             infoPanel.setVisible(true);
-            results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, location);
+            results = controller.searchTrips(tripName, date, startTime, endTime, description, familyFriendly, accessible, minPrice, maxPrice, type, area);
             showResults(results);
             this.validate();
             this.repaint();
