@@ -130,8 +130,12 @@ public class DBBookingManager {
                    statement += "AND ( customerid = ? ";
                else
                    statement += "OR customerid = ? ";
-           }           
-           statement += ");";
+           }
+           
+           if (customers.size() < 1)
+               statement += ";";
+           else
+               statement += ");";
                       
            myStmt = myConn.prepareStatement(statement);
            for(int i = 0; i < customers.size(); i++){
