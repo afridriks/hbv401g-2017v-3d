@@ -27,7 +27,7 @@ public final class DBTripManager {
         this.dbname = dbname;
     }
  
-    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String area) throws SQLException, ClassNotFoundException {
+    public Trip[] search(String tripName, Date date, Time startTime, Time endTime, String description, Boolean familyFriendly, Boolean accessible, int minPrice, int maxPrice, String type, String area, boolean showAllFromDate) throws SQLException, ClassNotFoundException {
         ArrayList<Trip> trips;
         trips = new ArrayList<>();
         try {
@@ -46,55 +46,56 @@ public final class DBTripManager {
             }            
             
             String queryString = "Select * FROM Trip WHERE ";
-            queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
-            queryString += description.length() == 0 ? "": "description LIKE ? AND ";
-            queryString += "date = ? AND ";
-            queryString += "startTime >= ? AND ";
-            queryString += "endTime <= ? AND ";
-            queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
-            queryString += accessible ? "accessible = 1 AND " : "";
-            queryString += "price >= ? AND ";
-            queryString += "price <= ? AND ";
-            queryString += "typeName LIKE ? AND ";
-            queryString += "area LIKE ? ;";
-            
-            System.out.println(queryString);
-            
-            myStmt = myConn.prepareStatement(queryString);
-            int i = 1;
-            if(tripName.length() != 0){
-                myStmt.setString(i,"%"+tripName+"%");
+            if(showAllFromDate) {
+                queryString += "date = ? ;"; 
+          
+                myStmt = myConn.prepareStatement(queryString);
+                myStmt.setString(1,date.toString());
+                System.out.println(queryString);
+                myStmt.setQueryTimeout(30);
+                myRs = myStmt.executeQuery();
+            } else {
+                queryString += tripName.length() == 0 ? "" : "name LIKE ? AND ";
+                queryString += description.length() == 0 ? "": "description LIKE ? AND ";
+                queryString += "date = ? AND ";
+                queryString += "startTime >= ? AND ";
+                queryString += "endTime <= ? AND ";
+                queryString += familyFriendly ? "familyFriendly = 1 AND " : "";
+                queryString += accessible ? "accessible = 1 AND " : "";
+                queryString += "price >= ? AND ";
+                queryString += "price <= ? AND ";
+                queryString += "typeName LIKE ? AND ";
+                queryString += "area LIKE ? ;";
+                
+                myStmt = myConn.prepareStatement(queryString);
+                int i = 1;
+                if(tripName.length() != 0){
+                    myStmt.setString(i,"%"+tripName+"%");
+                    i++;
+                }
+                if (description.length() != 0){
+                    myStmt.setString(i,"%"+description+"%");
+                    i++;
+                }
+                myStmt.setString(i,date.toString());
                 i++;
-            }
-            if (description.length() != 0){
-                myStmt.setString(i,"%"+description+"%");
+                myStmt.setString(i,startTime.toString().substring(0, 5));
                 i++;
+                myStmt.setString(i,endTime.toString().substring(0, 5));
+                i++;
+                myStmt.setString(i,Integer.toString(minPrice));
+                i++;
+                myStmt.setString(i,Integer.toString(maxPrice));
+                i++;
+                myStmt.setString(i,type);
+                i++;
+                myStmt.setString(i,area);
+                
+                myStmt.setQueryTimeout(30);
+                
+                myRs = myStmt.executeQuery();
             }
-            myStmt.setString(i,date.toString()/*.substring(0, 5) + date.toString().substring(6,10)*/);
-            i++;
-            myStmt.setString(i,startTime.toString().substring(0, 5));
-            i++;
-            myStmt.setString(i,endTime.toString().substring(0, 5));
-            i++;
-            myStmt.setString(i,Integer.toString(minPrice));
-            i++;
-            myStmt.setString(i,Integer.toString(maxPrice));
-            i++;
-            myStmt.setString(i,type);
-            i++;
-            myStmt.setString(i,area);
-            
-            System.out.println(date.toString()/*.substring(0, 5) + date.toString().substring(6,10)*/);
-            System.out.println(startTime.toString().substring(0, 5));
-            System.out.println(endTime.toString().substring(0,5));
-            System.out.println(Integer.toString(minPrice));
-            System.out.println(Integer.toString(maxPrice));
-            System.out.println(type);
-            System.out.println(area);
-            
-            myStmt.setQueryTimeout(30);
-            
-            myRs = myStmt.executeQuery();
+        
  
             // breyta ResultSet í fylki af Trip
              while(myRs.next()) {
@@ -108,8 +109,6 @@ public final class DBTripManager {
                 }
                 Trip newTrip = new Trip(myRs.getInt("id"),myRs.getString("name"),Date.valueOf(myRs.getString("date")),Time.valueOf(myRs.getString("startTime")+":00"),Time.valueOf(myRs.getString("endTime")+":00"),myRs.getString("description"),myRs.getInt("price"),myRs.getString("typeName"),myRs.getString("area"),myRs.getString("area"),myRs.getInt("maxTravelers"),(myRs.getInt("familyFriendly")==1),(myRs.getInt("accessible")==1),newTC,myRs.getInt("availablePlaces"));
                 trips.add(newTrip);
-                // bara til að testa
-              	//System.out.println(myRs.getString("name") + ", " + myRs.getInt("maxTravelers") + ", " + myRs.getString("date") + ", " + myRs.getString("startTime"));
             }
             
         } catch (SQLException ex) {
@@ -202,7 +201,7 @@ public final class DBTripManager {
     // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
-        Trip[] trips = man.search("",Date.valueOf("2017-6-22"),Time.valueOf("10:00:00"),Time.valueOf("13:00:00"),"",false,false,5000,30000,"Horse Trips","Western region");
+        Trip[] trips = man.search("",Date.valueOf("2017-06-22"),Time.valueOf("10:00:00"),Time.valueOf("13:00:00"),"",false,false,5000,30000,"Horse Trips","Western region", true);
         
         for(Trip t: trips) {
             System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getDate() + ", " + t.getTourCompany().getName() + ", " + t.getType() + ", " + t.getArea() + ", " + t.getLocation());
