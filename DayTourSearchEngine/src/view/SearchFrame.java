@@ -804,7 +804,19 @@ public class SearchFrame extends javax.swing.JFrame {
             maxPriceSlider.setEnabled(false);
             accessibleButton.setEnabled(false);
             familyFriendlyButton.setEnabled(false);
-            
+            nameSearchBox.setEnabled(false);
+            keyWordSearchBox.setEnabled(false);
+        } else {
+            areaCombo.setEnabled(true);
+            typeCombo.setEnabled(true);
+            startTimeSpinner.setEnabled(true);
+            endTimeSpinner.setEnabled(true);
+            minPriceSlider.setEnabled(true);
+            maxPriceSlider.setEnabled(true);
+            accessibleButton.setEnabled(true);
+            familyFriendlyButton.setEnabled(true);
+            nameSearchBox.setEnabled(true);
+            keyWordSearchBox.setEnabled(true);
         }
     }//GEN-LAST:event_showAllCheckBoxActionPerformed
 

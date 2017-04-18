@@ -42,7 +42,6 @@ public final class DBTripManager {
 
             while(myRs.next()) {
                 tc.add(new TourCompany(myRs.getInt("id"),myRs.getString("name"),myRs.getInt("phone"),myRs.getString("address"),myRs.getString("email")));
-              	//System.out.println(myRs.getInt("id")+myRs.getString("name")+myRs.getInt("phone")+myRs.getString("address")+myRs.getString("email"));
             }            
             
             String queryString = "Select * FROM Trip WHERE ";
@@ -51,7 +50,6 @@ public final class DBTripManager {
           
                 myStmt = myConn.prepareStatement(queryString);
                 myStmt.setString(1,date.toString());
-                System.out.println(queryString);
                 myStmt.setQueryTimeout(30);
                 myRs = myStmt.executeQuery();
             } else {
