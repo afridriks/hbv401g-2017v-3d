@@ -41,8 +41,7 @@ public class MockDBTripManager {
     
     public void updateAvailablePlaces(Trip t) throws ClassNotFoundException {
     }
-    
-    // Til þess að prófa sort föll.
+
     public static void main(String[] args) {
         Trip[] trips = new Trip[10];
         TourCompany tc = new TourCompany(1, "Fyrirtækið", 5675678, "hábær 15", "email@email.com");
@@ -53,12 +52,6 @@ public class MockDBTripManager {
          for(Trip t: trips) {
             System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getStartTime()+ ", " + t.getPrice());
         }
-         
         Trip[] sortedByPrice;
-        //sortedByPrice = TripController.sortTripsByName(trips);
-        
-        //  for(Trip t: sortedByPrice) {
-        //    System.out.println(t.getName() + ", " + t.getAvailablePlaces() + ", " + t.getStartTime()+ ", " + t.getPrice());
-        //}
     }
 }

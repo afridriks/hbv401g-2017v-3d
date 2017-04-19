@@ -50,9 +50,6 @@ public class SearchFrame extends javax.swing.JFrame {
         infoPanel.setVisible(false);
     }
     
-    /**
-     * 
-     */
     private void search() throws SQLException, ClassNotFoundException {
         
         // Extract date on sql-format from Calendar.
@@ -79,7 +76,6 @@ public class SearchFrame extends javax.swing.JFrame {
                Integer.parseInt(startTimeSpinner.getValue().toString().subSequence(14, 16).toString()),
                0
        );
-              
        
        // Extract endTime from spinner
        Time endTime = new Time(
@@ -110,7 +106,6 @@ public class SearchFrame extends javax.swing.JFrame {
            case 5 : area = "Western region"; break;
            case 6 : area = "Highlands of Iceland"; break;
        }      
-       
        
         if(minPrice > maxPrice) {
            showDialog("Minimum price must be lower than maximum price.");
@@ -695,7 +690,6 @@ public class SearchFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
-        
         // Get seleted Trip from ResultsPanel.
         Trip selectedRow = bookingPanel.getSelectedRow();
         if(selectedRow == null) {

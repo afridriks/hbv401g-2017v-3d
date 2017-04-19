@@ -34,7 +34,6 @@ public final class DBTripManager {
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
             
-            
             // ná í Tourcompanies og búa til objects
             ArrayList<TourCompany> tc = new ArrayList<>();
             myStmt = myConn.prepareStatement("SELECT * FROM TourCompany;");
@@ -94,7 +93,6 @@ public final class DBTripManager {
                 myRs = myStmt.executeQuery();
             }
         
- 
             // breyta ResultSet í fylki af Trip
              while(myRs.next()) {
                 // finna rétt tourcompany
@@ -120,7 +118,6 @@ public final class DBTripManager {
                 System.err.println(e);
             }
         }
-
         return trips.toArray(new Trip[0]);
     }
    
@@ -155,7 +152,6 @@ public final class DBTripManager {
         try {
             Class.forName("org.sqlite.JDBC");
             myConn = DriverManager.getConnection("jdbc:sqlite:"+dbname);
-            
             
             // ná í Tourcompanies og búa til objects
             ArrayList<TourCompany> tc = new ArrayList<>();
@@ -196,7 +192,6 @@ public final class DBTripManager {
         return trips.toArray(new Trip[0]);
     } 
     
-    // main fall til að testa
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         DBTripManager man = new DBTripManager("daytrips.db");
         Trip[] trips = man.search("",Date.valueOf("2017-06-22"),Time.valueOf("10:00:00"),Time.valueOf("13:00:00"),"",false,false,5000,30000,"Horse Trips","Western region", true);
