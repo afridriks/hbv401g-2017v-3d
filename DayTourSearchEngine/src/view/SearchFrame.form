@@ -34,7 +34,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="bookingInfoPanel" pref="1484" max="32767" attributes="0"/>
+                  <Component id="bookingInfoPanel" pref="1508" max="32767" attributes="0"/>
                   <Component id="bookingsPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="searchPanel" min="-2" max="-2" attributes="0"/>

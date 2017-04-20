@@ -27,7 +27,6 @@ public class BookTripPanel extends javax.swing.JPanel {
      */
     public BookTripPanel(List<Trip> results) {
         trips = results;
-        
     }
     
     public JScrollPane Show(){
