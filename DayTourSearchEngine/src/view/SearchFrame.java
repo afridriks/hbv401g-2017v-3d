@@ -48,6 +48,7 @@ public class SearchFrame extends javax.swing.JFrame {
         bookButton.setVisible(false);
         bookingInfoPanel.setVisible(false);
         infoPanel.setVisible(false);
+        showAllCheckBoxActionPerformed(null);
     }
     
     /**
@@ -316,6 +317,7 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
 
+        showAllCheckBox.setSelected(true);
         showAllCheckBox.setText("Show all trips from this date.");
         showAllCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
